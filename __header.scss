@@ -5,19 +5,19 @@
 }
 header{
     background: white;
-    width: 100%;
+    width: 110%;
 .header__container{
     display: flex;
     justify-content: space-between;
+    padding-left: 22px;
     .header--logo{
-        font-family: 'Montserrat', sans-serif;
-        padding-left: 22px;
         padding-top: 42px;
         z-index: 100;
+        font-family: 'Roboto', sans-serif;
     }
     .header__menu--button{
         padding-top: 52px;
-        margin-right: 26px;
+        margin-right: 60px;
         z-index: 100;
         top: 1rem;
         right: 1rem;

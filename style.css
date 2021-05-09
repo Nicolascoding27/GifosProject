@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 .line--purple {
   width: 100%;
   height: 5px;
@@ -7,7 +8,7 @@
 
 header {
   background: white;
-  width: 100%;
+  width: 110%;
 }
 
 header .header__container {
@@ -17,18 +18,18 @@ header .header__container {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  padding-left: 22px;
 }
 
 header .header__container .header--logo {
-  font-family: 'Montserrat', sans-serif;
-  padding-left: 22px;
   padding-top: 42px;
   z-index: 100;
+  font-family: 'Roboto', sans-serif;
 }
 
 header .header__container .header__menu--button {
   padding-top: 52px;
-  margin-right: 26px;
+  margin-right: 60px;
   z-index: 100;
   top: 1rem;
   right: 1rem;
@@ -53,6 +54,13 @@ header .header__menu {
 
 body {
   background: white;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .main__container {
@@ -87,12 +95,93 @@ body {
 
 .main__container .main__conatiner--image {
   margin-top: 31px;
+  width: 273px;
 }
 
-* {
-  padding: 0;
-  margin: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+.main__container .main__container--searchbox {
+  width: 334px;
+  height: 50px;
+  border: 2PX solid #572EE5;
+  background: transparent;
+  border-radius: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.main__container .main__container--searchbox .main__container--serachbox--input {
+  padding-left: 55px;
+  outline: none;
+  border: none;
+}
+
+.main__container .main__container--searchbox .main__container--serachbox--input::-webkit-input-placeholder {
+  font-family: "Roboto-Regular", "Roboto";
+  color: #6B7989;
+  font-size: 16px;
+}
+
+.main__container .main__container--searchbox .main__container--serachbox--input:-ms-input-placeholder {
+  font-family: "Roboto-Regular", "Roboto";
+  color: #6B7989;
+  font-size: 16px;
+}
+
+.main__container .main__container--searchbox .main__container--serachbox--input::-ms-input-placeholder {
+  font-family: "Roboto-Regular", "Roboto";
+  color: #6B7989;
+  font-size: 16px;
+}
+
+.main__container .main__container--searchbox .main__container--serachbox--input::placeholder {
+  font-family: "Roboto-Regular", "Roboto";
+  color: #6B7989;
+  font-size: 16px;
+}
+
+.main__container .main__container--searchbox .main__container--serachbox--image {
+  padding-right: 20px;
+}
+
+.main__container .main__container--trends {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main__container .main__container--trends .main__container--trends--title {
+  color: #572EE5;
+  font-family: 'Montserrat-Bold','Montserrat';
+  font-size: 16px;
+  text-align: center;
+  line-height: 25px;
+  padding-top: 44px;
+}
+
+.main__container .main__container--trends .main__container--trends--text {
+  width: 225px;
+  font-family: 'Montserrat-Medium','Montserrat';
+  font-size: 14px;
+  color: #572EE5;
+  text-align: center;
+  line-height: 25px;
+  font-weight: 530;
+  padding-top: 2px;
 }
 /*# sourceMappingURL=style.css.map */
