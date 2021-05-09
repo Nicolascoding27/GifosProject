@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap");
 .line--purple {
   width: 100%;
   height: 5px;
@@ -6,6 +7,7 @@
 
 header {
   background: white;
+  width: 100%;
 }
 
 header .header__container {
@@ -18,6 +20,7 @@ header .header__container {
 }
 
 header .header__container .header--logo {
+  font-family: 'Montserrat', sans-serif;
   padding-left: 22px;
   padding-top: 42px;
   z-index: 100;
@@ -50,6 +53,40 @@ header .header__menu {
 
 body {
   background: white;
+}
+
+.main__container {
+  margin-top: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.main__container h1 {
+  width: 286px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 25px;
+  color: #572EE5;
+  text-align: center;
+  line-height: 33px;
+}
+
+.main__container h1 span {
+  color: #50E3C2;
+}
+
+.main__container .main__conatiner--image {
+  margin-top: 31px;
 }
 
 * {

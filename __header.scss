@@ -5,10 +5,12 @@
 }
 header{
     background: white;
+    width: 100%;
 .header__container{
     display: flex;
     justify-content: space-between;
     .header--logo{
+        font-family: 'Montserrat', sans-serif;
         padding-left: 22px;
         padding-top: 42px;
         z-index: 100;
