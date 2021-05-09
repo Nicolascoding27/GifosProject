@@ -1,11 +1,11 @@
 .line--purple{
-    width: 100%;
+    width: 110%;
     height: 5px;
     background: $purple;
 }
 header{
     background: white;
-    width: 110%;
+    width: 100%;
 .header__container{
     display: flex;
     justify-content: space-between;
@@ -17,7 +17,6 @@ header{
     }
     .header__menu--button{
         padding-top: 52px;
-        margin-right: 60px;
         z-index: 100;
         top: 1rem;
         right: 1rem;
