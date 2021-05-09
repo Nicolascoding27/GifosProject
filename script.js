@@ -1,0 +1,5 @@
+let menu=document.querySelector('.header__menu')
+let button=document.querySelector('.header__menu--button')
+let xIcon=document.querySelector('.xIcon')
+let menuIcon=document.querySelector('.menuIcon')
+console.log(menu)
