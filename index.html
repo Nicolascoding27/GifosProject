@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,8 +11,39 @@
     <title>Gifos project</title>
 </head>
 <body>
-    <header></header>
-    <main></main>
+     <div class="line--purple"></div>
+    <header>
+        <div class="header__container">
+          <iframe class='header--logo' src="./assets/logo-mobile.svg" frameborder="0"></iframe>
+        <button class="header__menu--button">
+            <span class="menuIcon material-icons">
+              menu
+            </span>
+            <span class="xIcon material-icons">
+              close
+            </span>
+          </button>
+        </div>
+        <ul class="header__menu" >
+            <li><a class="menuLink"  href="#">Modo Nocturno</a></li>
+            <li><a class="menuLink" href="#">Favoritos</a></li>
+            <li><a class="menuLink" href="#">Mis GIFOS</a></li>
+          </ul>
+    </header>
+    <main>
+        <div class="main__container">
+            <h1>Inspírate, busca, guarda, y crea los mejores <span>GIFOS</span> </h1>
+            <img class="main__conatiner--image" src="./assets/ilustra_header.svg">
+            <div class="main__container--searchbox">
+                <input type="text" class="main__container--serachbox--input" placeholder="Busca GIFOS y más">
+                <img class= 'main__container--serachbox--image'src="./assets/icon-search.svg" alt="">
+            </div>
+            <div class="main__container--trends">
+                <h1 class="main__container--trends--title">Trending:</h1>
+                <p class="main__container--trends--text"> Reactions, Entertainment, Sports, Stickers, Artists </p>
+            </div>
+        </div>
+    </main>
     <section class="trending">
         <h1 class="title">Trending GIFOS</h1>
         <p>Mira los últimos <br> GIFOS de nuestra comunidad.</p> <!-- cambiar desde JS -->
@@ -59,5 +91,5 @@
         </ul>
         <p class="footer__text">© GIFOS 2020 All Rights Reserved</p>
     </footer>
+  <script src="./script.js"></script>
 </body>
-</html>
