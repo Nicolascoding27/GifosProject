@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap");
 .line--purple {
-  width: 110%;
+  width: 100%;
   height: 5px;
   background: #572EE5;
 }
@@ -20,6 +21,7 @@ header .header__container {
       -ms-flex-pack: justify;
           justify-content: space-between;
   padding-left: 22px;
+  z-index: 1000;
 }
 
 header .header__container .header--logo {
@@ -47,10 +49,44 @@ header .header__container .header__menu--button .xIcon {
 }
 
 header .header__menu {
+  display: none;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.header__menu--active {
+  padding-top: 17px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: rgba(87, 46, 229, 0.9);
+  -webkit-transform: translateY(-15%);
+          transform: translateY(-15%);
+  height: 550px;
+  list-style: none;
+  line-height: 60px;
+  font-size: 15px;
+}
+
+.header__menu--active a {
+  color: white;
+  text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.header__menu--active a::after {
+  border-bottom: 1px solid white;
+  width: 41px;
+  content: "";
+  margin: 0 auto;
+  display: block;
 }
 
 body {
