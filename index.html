@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +11,7 @@
     <title>Gifos project</title>
 </head>
 <body>
-    <div class="line--purple"></div>
+     <div class="line--purple"></div>
     <header>
         <div class="header__container">
           <iframe class='header--logo' src="./assets/logo-mobile.svg" frameborder="0"></iframe>
@@ -43,8 +44,52 @@
             </div>
         </div>
     </main>
-    <section class="trending"></section>
-    <footer class="footer"></footer>
-    <script src="./script.js"></script>
+    <section class="trending">
+        <h1 class="title">Trending GIFOS</h1>
+        <p>Mira los últimos <br> GIFOS de nuestra comunidad.</p> <!-- cambiar desde JS -->
+        <div class="carousel">
+            <div class="carousel-item">
+                <!-- temporal mientras se establece la conexion con la API -->
+                <img class="carousel-item__img" src="https://images.pexels.com/photos/1183434/pexels-photo-1183434.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="cat laught">
+                <div class="carousel-item__details">
+                    <!-- posicionar botones -->
+                    <div class="carousel-item__buttons">
+                        <img id="favorite" src="/assets/icon-fav.svg" alt="favorite_icon">
+                        <img id="download" src="/assets/icon-download.svg" alt="favorite_icon">
+                        <img id="max" src="/assets/icon-max-normal.svg" alt="favorite_icon">
+                    </div>
+                    <div class="carousel-item__info">
+                        <p>User</p>
+                        <h3>Titulo GIFO</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <!-- temporal mientras se establece la conexion con la API -->
+                <img class="carousel-item__img" src="https://images.pexels.com/photos/1183434/pexels-photo-1183434.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="cat laught">
+                <div class="carousel-item__details">
+
+                    <!-- posicionar botones -->
+                </div>
+            </div>
+            <div class="carousel-item">
+                <!-- temporal mientras se establece la conexion con la API -->
+                <img class="carousel-item__img" src="https://images.pexels.com/photos/1183434/pexels-photo-1183434.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt="cat laught">
+                <div class="carousel-item__details">
+                    <!-- posicionar botones -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <p class="footer__text">Compartir en:</p>
+        <ul>
+            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+        <p class="footer__text">© GIFOS 2020 All Rights Reserved</p>
+    </footer>
+  <script src="./script.js"></script>
 </body>
-</html>
