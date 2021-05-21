@@ -112,6 +112,26 @@
             }
         }
 
+        /* .active .main__container--autocom-box{
+            padding: 4px 10px 18px 54px;
+            opacity: 1;
+            pointer-events: auto;
+
+            li {
+                display: block;
+            }
+        } */
+
+    }
+
+    .main__container--searchbox .active .main__container--autocom-box {
+        padding: 4px 10px 18px 54px;
+        opacity: 1;
+        pointer-events: auto;
+
+        li {
+            display: block;
+        }
     }
 
     .main__container--trends{

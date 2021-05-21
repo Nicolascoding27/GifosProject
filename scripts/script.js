@@ -2,11 +2,11 @@ let menu=document.querySelector('.header__menu')
 let button=document.querySelector('.header__menu--button')
 let xIcon=document.querySelector('.xIcon')
 let menuIcon=document.querySelector('.menuIcon')
-let searchBar = document.querySelector('.main__container--serachbox--input')
-let searchContainer = document.querySelector('.main__container--searchbox')
 
-button.addEventListener("click", toggleMenu)
-//searchBar.addEventListener("input", showOptions)
+//getting elements in the search section
+let searchContainer = document.querySelector('.main__container--searchbox')
+let inputBox = document.querySelector('.main__container--serachbox--input')
+let suggestionBox = document.querySelector('.main__container--autocom-box')
 
 function toggleMenu() {
   if (menu.classList.contains("header__menu--active")) {
@@ -22,16 +22,7 @@ function toggleMenu() {
   }
 }
 
-//arreglar
-function showOptions() {
-  element_search = `
-    <p> Opcion 1 <p>
-    <p> Opcion 2 <p>
-    <p> Opcion 3 <p>
-  `
-  searchContainer.insertAdjacentHTML('afterbegin',element_search)
-}
-
+button.addEventListener("click", toggleMenu)
 var menuLinks = document.querySelectorAll(".menuLink")
 
 menuLinks.forEach(
@@ -39,3 +30,45 @@ menuLinks.forEach(
     menuLink.addEventListener("click", toggleMenu)
   }
 )
+
+//if user press any key and release
+inputBox.onkeyup = (event) => {
+  let userData = event.target.value
+  let emptyArray = []
+  if (userData) {
+    emptyArray = suggestions.filter((data)=> {
+      //filtering array value and user char to lowercase and return only those words which include user entry
+      return data.toLowerCase().includes(userData.toLowerCase())
+    })
+    emptyArray = emptyArray.map((data) => {
+      return `<li>${data}</li>`
+    })
+    console.log(emptyArray)
+    searchContainer.classList.add("active")
+    showSuggestions(emptyArray)
+    let allList = suggestionBox.querySelectorAll("li")
+    for (let i = 0; i < allList.length; i++) {
+      //adding click attribute in all li tag
+      allList[i].setAttribute("onclick", "select(this)")
+    }
+
+  } else {
+    searchContainer.classList.remove("active")
+  } 
+}
+
+function select(element){
+  let selectUserData = element.textContent
+  inputBox.value = selectUserData //passing the user selected list item data in textfield
+}
+
+function showSuggestions(list) {
+  let listData
+  if (!list.lenght) {
+    userValue = inputBox.value
+    listData = `<li>${userValue}</li>`
+  }else {
+    listData = list.join('')
+  }
+  suggestionBox.innerHTML = listData
+}
