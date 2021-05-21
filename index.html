@@ -14,11 +14,11 @@
      <div class="line--purple"></div>
     <header>
         <div class="header__container">
-          <iframe class='header--logo' src="./assets/logo-mobile.svg" frameborder="0"></iframe>
+          <img class='header--logo' src="./assets/logo-mobile.svg">
         <button class="header__menu--button">
-            <span class="menuIcon material-icons">
+            <i class="menuIcon material-icons">
               menu
-            </span>
+            </i>
             <span class="xIcon material-icons">
               close
             </span>
@@ -34,10 +34,22 @@
         <div class="main__container">
             <h1>Inspírate, busca, guarda, y crea los mejores <span>GIFOS</span> </h1>
             <img class="main__conatiner--image" src="./assets/ilustra_header.svg">
-            <div class="main__container--searchbox">
-                <input type="text" class="main__container--serachbox--input" placeholder="Busca GIFOS y más">
-                <img class= 'main__container--serachbox--image'src="./assets/icon-search.svg" alt="">
+            <!-- sección de barra de busqueda -->
+            <div class="main__container--wrapper">
+                <div class="main__container--searchbox">
+                    <input type="text" class="main__container--serachbox--input" placeholder="Busca GIFOS y más">
+                    <div class="gray-line"></div>
+                    <div class="main__container--autocom-box">
+                        <li>Login Form in HTML & CSS</li>
+                        <li>Gato gracioso</li>
+                        <li>Gato sonriente</li>
+                        <li>Loco en el techo</li>
+                    </div>
+                    <!-- <img class= 'main__container--serachbox--image' src="./assets/icon-search.svg" alt=""> -->
+                    <div class="main__container--serachbox--image"><i class="material-icons">search</i></div>
+                </div>
             </div>
+
             <div class="main__container--trends">
                 <h1 class="main__container--trends--title">Trending:</h1>
                 <p class="main__container--trends--text"> Reactions, Entertainment, Sports, Stickers, Artists </p>
@@ -91,6 +103,6 @@
         </ul>
         <p class="footer__text">© GIFOS 2020 All Rights Reserved</p>
     </footer>
-  <script src="./script.js"></script>
+  <script src="./scripts/script.js"></script>
 </body>
 </html>

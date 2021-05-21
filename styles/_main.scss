@@ -19,31 +19,101 @@
         margin-top: 31px;
         width: 273px;
     }
-    .main__container--searchbox{
+
+    .main__container--wrapper {
         width: 334px;
-        height: 50px;
-        border: 2PX solid $purple;
-        margin-left: 22px;
+        z-index: 0;
+        
+        .main__container--searchbox {
+            background: #fff;
+            width: 100%;
+            border-radius: 25px;
+        }
+
+    }
+
+    .main__container--searchbox{
+        position: relative;
+        border: 2px solid $purple;
         background:transparent;
-        border-radius: 25px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        cursor: pointer;
+
+        .gray-line {
+            height: 1px;
+            width: 80%;
+            opacity: 50%;
+            margin: 0 auto;
+            background: #9CAFC3;
+        }
+
         .main__container--serachbox--input{
-            padding-left: 55px;
+            height: 45px;
+            width: 100%;
             outline: none;
             border: none;
-            background: none;
+            border-radius: 25px;
+            padding: 0 60px 0 54px;
+            font-size: 16px;
+            font-family: $roboto;
+
             &::placeholder{
                 font-family: $roboto;
                 color:$gray;
                 font-size: 16px;
             }
+
+            &::after {
+                border-bottom: 3px solid #9CAFC3;
+                width: 290px;
+                content: "";
+                margin:0 auto;
+                display:block;
+            }
+
         }
+
         .main__container--serachbox--image{
-            padding-right: 20px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            color: $purple;
+            padding-right: 24px;
+            cursor: pointer;
+
+            i {
+                line-height: 45px;
+                text-align: center;
+                width: 20px;
+                height: 20px;
+            }
         }
+
+        .main__container--autocom-box {
+            /* padding: 4px 10px 18px 54px; */
+            max-height: 150px;
+            overflow-y: auto;
+            opacity: 0;
+            pointer-events: none;
+
+            &::-webkit-scrollbar {
+                display: none;
+              }
+
+            li {
+                list-style: none;
+                padding: 10px 0px;
+                width: 100%;
+                cursor: default;
+                border-radius: 3px;
+                color: #9CAFC3;
+                font-family: $roboto;
+                font-size: 16px;
+                display: none;
+            }
+        }
+
     }
+
     .main__container--trends{
         display: flex;
         flex-direction: column;
