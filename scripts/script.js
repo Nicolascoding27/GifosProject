@@ -16,7 +16,15 @@ let webLink;
 const icon_list_options = '<i class="fas fa-search"></i>'
 //--------------------------------------------------------------------------
 
+//changes icons with hover event in carousel section-----------------------
+const trending_element = document.querySelector('.trending')
+
+//-------------------------------------------------------------------------
+
 function toggleMenu() {
+  /* 
+  this function toggle the menu options in mobile view
+  */
   if (menu.classList.contains("header__menu--active")) {
     menu.classList.remove("header__menu--active")
     menu.classList.add('header__menu')
@@ -42,7 +50,7 @@ menuLinks.forEach(
 //search suggestions-----------------------------------------------
 // if user press any key and release
 inputBox.onkeyup = (e)=>{
-  let userData = e.target.value //user enetered data
+  let userData = e.target.value //user entered data
   let emptyArray = []
   if(userData){
       icon.onclick = ()=>{
@@ -79,6 +87,9 @@ inputBox.onkeyup = (e)=>{
 }
 
 function select(element){
+  /* 
+  hides the search options when a search option is chosen
+  */
   let selectData = element.textContent
   inputBox.value = selectData
   icon.onclick = ()=>{
@@ -90,6 +101,9 @@ function select(element){
 }
 
 function showSuggestions(list){
+  /* 
+  add the search options HTML elements in the search box element to DOM
+  */
   let listData
   if(!list.length){
       userValue = inputBox.value
