@@ -139,8 +139,8 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        color: $purple;
         .main__container--trends--title{
-            color: $purple;
             font-family: 'Montserrat-Bold','Montserrat';
             font-size: 16px;
             text-align: center;
@@ -150,7 +150,6 @@
             width:225px;
             font-family: 'Montserrat-Medium','Montserrat';
             font-size: 14px;
-            color: $purple;
             text-align: center;
             line-height: 25px;
             font-weight: 530;
