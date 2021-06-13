@@ -14,6 +14,7 @@ let logo = document.getElementById('logo');
 let trending=document.getElementById('trending');
 let trendingTitle=document.getElementById('trending--title');
 let footer = document.getElementById('footer');
+var x= Window.matchMedia("(max-width:700px")
 //getting elements in the search section-----------------------------------
 const searchWrapper = document.querySelector(".main__container--searchbox")
 const inputBox = searchWrapper.querySelector("input")
@@ -28,6 +29,7 @@ const icon_list_options = '<i class="fas fa-search"></i>'
 //--------------------------------------------------------------------------
 /**Function that aims to show the hamburger menu */
 function toggleMenu() {
+  // if(x.matches){
   if (menu.classList.contains("header__menu--active")) {
     menu.classList.remove("header__menu--active")
     menu.classList.add('header__menu')
@@ -40,6 +42,7 @@ function toggleMenu() {
     menuIcon.style.display = "none"
   }
 }
+
 
 button.addEventListener("click", toggleMenu)
 var menuLinks = document.querySelectorAll(".menuLink")
@@ -147,5 +150,4 @@ function activateDarkMode() {
     footer.style.color="black";
     
   }
-  
 }
