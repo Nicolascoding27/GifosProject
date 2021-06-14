@@ -42,8 +42,8 @@
     width: 243px;
     height: 187px;
     overflow: hidden;
-    margin-right: 22px;
-    display: inline-block;
+    
+    display: inline-block; //maybe change
     cursor: pointer;
     transition: 450ms all;
     transform-origin: center left;
@@ -118,15 +118,38 @@
 }
 
 .bg-modal {
+    margin-right: 22px; //change
+    display: inline-block;
+	/* width: 243px; //change 
+	height: 187px;//change */
+	//position: none; //change
+	/* top: 0;
+    left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center; */
+}
+.bg-modal-active {
 	background-color: rgba(0, 0, 0, 0.8);
-	width: 100%;
-	height: 100%;
-	position: fixed;
+    margin-right: 0px; //change
+	width: 100%; //change 
+	height: 100%;//change
+	position: fixed; //change
 	top: 0;
     left: 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+    z-index: 2;
+}
+
+.bg-modal__modal-close {
+    font-size: 30px;
+    color: #572EE5;
+    position: absolute;
+    top: 130px;
+    right: 30px;
+    cursor: pointer;
 }
 
 //estilo de footer-------------------------------------
