@@ -61,16 +61,16 @@
         <div class="carousel">
 
             <div class="bg-modal">
-              <span class="bg-modal__modal-close"><i class="fas fa-times"></i></span>
+              <span class="bg-modal__modal-close" hidden><i class="fas fa-times"></i></span>
               <div class="carousel-item">
                   <!-- temporal mientras se establece la conexion con la API -->
                   <img class="carousel-item__img" src="https://media4.giphy.com/media/TP34h0XAWrjgZEQWnP/giphy-downsized.gif?cid=0fbcb9cbvhwcw3aki4n104rz4t8pwocjze23zqni8i440hsv&rid=giphy-downsized.gif&ct=g" alt="cat laught">
                   <div class="carousel-item__details">
                       <!-- posicionar botones -->
                       <div class="carousel-item__buttons">
-                          <img id="favorite" src="/assets/icon-fav.svg" alt="favorite_icon">
-                          <img id="download" src="/assets/icon-download.svg" alt="favorite_icon">
-                          <img id="max" src="/assets/icon-max-normal.svg" alt="favorite_icon">
+                          <div id="favorite" aria-labelledby="favorite_icon"></div>
+                          <div id="download" aria-labelledby="download"></div>
+                          <div id="max" aria-labelledby="maximize"></div>
                       </div>
                       <div class="carousel-item__info">
                           <p>User</p>
