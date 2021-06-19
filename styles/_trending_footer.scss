@@ -53,9 +53,13 @@
 .carousel-item-active {
     background-color: transparent;
     max-width: $width-trending-phone-active-max;
-    max-height: $height-trending-phone-active-max;
+    //max-height: $height-trending-phone-active-max;
+    width: auto;
+    height: auto;
     
-    display: inline-block; //maybe change
+    display: flex; //maybe change
+    flex-direction: column;
+    align-items: center;
     transition: 450ms all;
     transform-origin: center left;
     position: relative;
@@ -71,7 +75,11 @@
 .carousel-item__img-active {
     max-width: $width-trending-phone-active-max;
     max-height: $height-trending-phone-active-max;
-    object-fit: cover;
+    width: auto;
+    height: auto;
+    object-fit: fill;
+    display: flex;
+    align-content: center;
 }
 
 .carousel-item__details {
@@ -99,15 +107,15 @@
 }
 
 .carousel-item__details-active {
-    width: $width-trending-phone;
+    max-width: $width-trending-phone-active-max;
+    width: auto;
     font-size: 10px;
     color: black;
     
     //position
-    position: fixed;
     display: flex;
     justify-content: space-around;
-    flex-direction: row-reverse;
+    flex-direction: column;
 }
 
 .carousel-item__buttons {
@@ -143,6 +151,7 @@
         font-weight: 900;
         font-size: 16px;
         margin-bottom: 21px;
+        white-space: pre-wrap;
     }
 }
 
@@ -169,8 +178,8 @@
     font-size: 30px;
     color: #572EE5;
     position: absolute;
-    top: 130px;
-    right: 30px;
+    top: 100px;
+    right: 20px;
     cursor: pointer;
 }
 

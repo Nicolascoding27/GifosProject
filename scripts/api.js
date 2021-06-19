@@ -50,6 +50,7 @@ function init_trending() {
             function (modal_item) {
                 const carousel_item = modal_item.querySelector('.carousel-item')
                 const modal_close = modal_item.querySelector('.bg-modal__modal-close')
+                const carousel_item_image = carousel_item.querySelector('.carousel-item__img')
                 const carousel_item_details = carousel_item.querySelector('.item-detail')
                 const carousel_item_details_buttons = carousel_item_details.querySelector('.item-buttons')
                 const carousel_item_details_info = carousel_item_details.querySelector('.item-info')
@@ -58,10 +59,11 @@ function init_trending() {
                 console.log(modal_close)
                 carousel_item.addEventListener("click", ()=> {
                     //set the modal style in a gif item
-                    modal_item.classList.remove("bg-modal")
-                    modal_item.classList.add("bg-modal-active")
-                    //change gif item description a buttons
-
+                    modal_item.classList.remove('bg-modal')
+                    modal_item.classList.add('bg-modal-active')
+                    //change gif item description and buttons
+                    carousel_item.classList.add('carousel-item-active')
+                    carousel_item_image.classList.add('carousel-item__img-active')
                     carousel_item_details.classList.remove('carousel-item__details')
                     carousel_item_details.classList.add('carousel-item__details-active')
                     modal_close.hidden=false
@@ -71,9 +73,11 @@ function init_trending() {
                     modal_close.onclick = (event) => {
                         //remove modal style in a gif item
                         event.preventDefault()
-                        modal_item.classList.remove("bg-modal-active")
-                        modal_item.classList.add("bg-modal")
+                        modal_item.classList.remove('bg-modal-active')
+                        modal_item.classList.add('bg-modal')
                         //remove modal gif item style
+                        carousel_item.classList.remove('carousel-item-active')
+                        carousel_item_image.classList.remove('carousel-item__img-active')
                         carousel_item_details.classList.remove('carousel-item__details-active')
                         carousel_item_details.classList.add('carousel-item__details')
                         modal_close.hidden=true
