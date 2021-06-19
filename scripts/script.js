@@ -51,16 +51,22 @@ menuLinks.forEach(
 
 //search suggestions-----------------------------------------------
 // if user press any key and release
+
+function search_option(user_option){
+  webLink = "https://www.google.com/search?q=" + user_option
+  linkTag.setAttribute("href", webLink)
+  console.log(webLink)
+  linkTag.click()
+}
+
 inputBox.onkeyup = (e)=>{
   let userData = e.target.value //user entered data
   let emptyArray = []
   if(userData){
       icon.onclick = ()=>{
-          webLink = "https://www.google.com/search?q=" + userData
-          linkTag.setAttribute("href", webLink)
-          console.log(webLink)
-          linkTag.click()
+          search_option(userData)
       }
+
       emptyArray = suggestions.filter((data)=>{
           //filtering array value and user characters to lowercase and return only those words which are start with user enetered chars
           return data.toLocaleLowerCase().includes(userData.toLocaleLowerCase())
@@ -85,6 +91,7 @@ inputBox.onkeyup = (e)=>{
       icon_search.classList.add("fa-search")
       icon_search.classList.remove("fa-times")
       icon_search_active.hidden = true
+      icon.onclick = undefined
   }
 }
 

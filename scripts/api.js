@@ -24,15 +24,15 @@ function init_trending() {
                 <span class="bg-modal__modal-close" hidden><i class="fas fa-times"></i></span>
                 <div class="carousel-item">
                     <img class="carousel-item__img" src="${content.data[index_gif].images.downsized.url}" alt="${content.data[index_gif].title}">
-                    <div class="carousel-item__details">
+                    <div class="carousel-item__details item-detail">
 
-                        <div class="carousel-item__buttons">
+                        <div class="carousel-item__buttons item-buttons">
                             <div id="favorite" aria-labelledby="favorite_icon"></div>
                             <div id="download" aria-labelledby="download"></div>
                             <div id="max" aria-labelledby="maximize"></div>
                         </div>
 
-                        <div class="carousel-item__info">
+                        <div class="carousel-item__info item-info">
                             <p>${content.data[index_gif].username}</p>
                             <h3>${content.data[index_gif].title}</h3>
                         </div>
@@ -45,12 +45,14 @@ function init_trending() {
         carousel_trending_container.innerHTML += gif_html_element
 
         bg_modal_items = carousel.querySelectorAll(':scope > div')
-        console.log(bg_modal_items)
 
         bg_modal_items.forEach(
             function (modal_item) {
                 const carousel_item = modal_item.querySelector('.carousel-item')
                 const modal_close = modal_item.querySelector('.bg-modal__modal-close')
+                const carousel_item_details = carousel_item.querySelector('.item-detail')
+                const carousel_item_details_buttons = carousel_item_details.querySelector('.item-buttons')
+                const carousel_item_details_info = carousel_item_details.querySelector('.item-info')
                 //const favorite_button = carousel_item.querySelector('#favorite')
                 modal_close.hidden= true
                 console.log(modal_close)
@@ -58,6 +60,10 @@ function init_trending() {
                     //set the modal style in a gif item
                     modal_item.classList.remove("bg-modal")
                     modal_item.classList.add("bg-modal-active")
+                    //change gif item description a buttons
+
+                    carousel_item_details.classList.remove('carousel-item__details')
+                    carousel_item_details.classList.add('carousel-item__details-active')
                     modal_close.hidden=false
                 })
                 
@@ -67,9 +73,11 @@ function init_trending() {
                         event.preventDefault()
                         modal_item.classList.remove("bg-modal-active")
                         modal_item.classList.add("bg-modal")
+                        //remove modal gif item style
+                        carousel_item_details.classList.remove('carousel-item__details-active')
+                        carousel_item_details.classList.add('carousel-item__details')
                         modal_close.hidden=true
                     }
-                    console.log("Create a close method")
                 }
 
                 /* //save state of favorite button

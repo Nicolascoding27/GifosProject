@@ -39,7 +39,7 @@
 
 .carousel-item {
     background-color: #572EE5;
-    width: 243px;
+    width: $width-trending-phone;
     height: 187px;
     overflow: hidden;
     
@@ -50,10 +50,27 @@
     position: relative;
 }
 
+.carousel-item-active {
+    background-color: transparent;
+    max-width: $width-trending-phone-active-max;
+    max-height: $height-trending-phone-active-max;
+    
+    display: inline-block; //maybe change
+    transition: 450ms all;
+    transform-origin: center left;
+    position: relative;
+}
+
 /* carousel --- item---images---------------------------- */
 .carousel-item__img {
     width: $width-trending-phone;
     height: 187px;
+    
+    object-fit: cover;
+}
+.carousel-item__img-active {
+    max-width: $width-trending-phone-active-max;
+    max-height: $height-trending-phone-active-max;
     object-fit: cover;
 }
 
@@ -79,6 +96,18 @@
         //active color
         opacity: 1;
     }
+}
+
+.carousel-item__details-active {
+    width: $width-trending-phone;
+    font-size: 10px;
+    color: black;
+    
+    //position
+    position: fixed;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row-reverse;
 }
 
 .carousel-item__buttons {
@@ -123,7 +152,7 @@
 }
 
 .bg-modal-active {
-	background-color: rgba(0, 0, 0, 0.8);
+	background-color: rgba(255, 255, 255, 0.8);
     margin-right: 0px;
 	width: 100%;
 	height: 100%;
