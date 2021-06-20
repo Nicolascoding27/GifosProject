@@ -18,7 +18,7 @@ function create_html_gif_element(gif_elements,father_element){
     let gif_html_element = ''
     //data, pagination /meta
     console.log(gif_elements.data)
-    console.log('META', gif_elements.meta)
+    console.log(`META ${father_element}`, gif_elements.meta)
     //create a HTML render element
     for (let index_gif = 0; index_gif < gif_elements.data.length; index_gif++) {
         //create the gif element
@@ -61,7 +61,6 @@ function assign_events_items(father_element) {
             const carousel_item_details_info = carousel_item_details.querySelector('.item-info')
             //const favorite_button = carousel_item.querySelector('#favorite')
             modal_close.hidden= true
-            console.log(modal_close)
             carousel_item.addEventListener("click", ()=> {
                 //set the modal style in a gif item
                 modal_item.classList.remove('bg-modal')
@@ -128,10 +127,17 @@ async function init_search(search_option) {
      * and show 12 search results per page
      */
     try {
-        //put code
+        const limit_search = 10
+        let url = `https://api.giphy.com/v1/gifs/search?api_key=${APIKEY}&limit=${limit_search}&q=${search_option}`
+        const res = await fetch(url)
+        let gif_trending_res = await res.json()
+        create_html_gif_element(gif_trending_res,search_container_list)
+        assign_events_items(search_container_list)
+
     } catch (err) {
         console.error(err)
     }
 }
 
 document.addEventListener('DOMContentLoaded', init_trending)
+init_search('father')
