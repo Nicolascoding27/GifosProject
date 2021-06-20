@@ -17,9 +17,7 @@ const icon_list_options = '<i class="fas fa-search"></i>'
 //--------------------------------------------------------------------------
 
 //changes icons with hover event in carousel section-----------------------
-const trending_element = document.querySelector('.trending')
-const carousel = trending_element.querySelector('.carousel')
-let bg_modal_items
+
 
 //-------------------------------------------------------------------------
 
