@@ -20,7 +20,7 @@
         width: 273px;
     }
 
-    //edición---------------------------------------------------------
+    //search section---------------------------------------------------------
     .main__container--wrapper{
         width: 334px;
       
@@ -158,4 +158,64 @@
             margin-bottom: 45px;
         }
     }
+}
+
+.main__container_results {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px 21px;
+
+  .carousel-item {
+    width: $width-search-phone;
+    height: $height-search-phone;
+  }
+
+  .carousel-item-active {
+    //@extend %carousel_item_active;
+    background-color: transparent;
+    max-width: $width-gif-phone-active-max;
+    width: auto;
+    height: auto;
+    
+    display: flex; //maybe change
+    flex-direction: column;
+    align-items: center;
+    transition: 450ms all;
+    transform-origin: center left;
+    position: relative;
+  }
+
+  .carousel-item__img {
+    width: $width-search-phone;
+    height: $height-search-phone;
+  }
+
+  .carousel-item__img-active {
+    //@extend %carousel_item_img_active;
+    max-width: $width-gif-phone-active-max;
+    max-height: $height-gif-phone-active-max;
+    width: auto;
+    height: auto;
+    object-fit: fill;
+    display: flex;
+    align-content: center;
+  }
+
+  .carousel-item__details{
+    width: $width-search-phone;
+  }
+
+  .carousel-item__details-active {
+    //@extend %carousel_item_details_active;
+    max-width: $width-gif-phone-active-max;
+    width: auto;
+    font-size: 10px;
+    color: black;
+    margin-top: 15px;
+    
+    //position
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+  }
 }

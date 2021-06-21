@@ -2,6 +2,61 @@ $purple:#572EE5;
 $light-green:#50E3C2;
 $gray:#6B7989;
 $roboto:'Roboto-Regular','Roboto';
+
+//trending variables
 $width-trending-phone: 243px;
-$width-trending-phone-active-max: 280px;
-$height-trending-phone-active-max: 380px;
+$height-trending-phone: 187px;
+
+//search variable
+$width-search-phone: 156px;
+$height-search-phone: 120px;
+
+//active modals gif items
+$width-gif-phone-active-max: 280px;
+$height-gif-phone-active-max: 380px;
+
+//Mixins
+@mixin carousel_item($width, $height) {
+    background-color: #572EE5;
+    width: $width;
+    height: $height;
+    overflow: hidden;
+    
+    display: inline-block; //maybe change
+    cursor: pointer;
+    transition: 450ms all;
+    transform-origin: center left;
+    position: relative;
+    
+}
+
+@mixin carousel_item_img($width, $height) {
+    width: $width;
+    height: $height;
+    
+    object-fit: cover;
+}
+
+@mixin carousel_item_details($width) {
+    background: rgba(87, 46, 229,0.6);
+    width: $width;
+    font-size: 10px;
+    color:white;
+    opacity: 0;
+    transition: 450ms opacity;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    //position
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+
+    &:hover {
+        //active color
+        opacity: 1;
+    }
+}
