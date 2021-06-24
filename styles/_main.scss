@@ -205,6 +205,68 @@
     width: $width-search-phone;
   }
 
+  .carousel-item__buttons {
+    div {
+        margin-right: 8px;
+        width: 25px;
+        height: 25px;
+
+        &:last-of-type{
+            margin-right: 0px;
+        }
+    }
+  }
+
+  .carousel-item__buttons_active {
+    display: flex;
+    justify-content: flex-end;
+
+    div {
+        margin-right: 10px;
+        width: 32px;
+        height: 32px;
+
+        &:last-of-type{
+            margin-right: 0px;
+        }
+    }
+  }
+
+  .carousel-item__info {
+    p {
+        font-size: 10px;
+        margin-bottom: 2px;
+    }
+
+    h3 {
+        font-size: 12px;
+        margin-bottom: 5px;
+    }
+  }
+
+  .carousel-item__info_active {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow-x: hidden;
+  
+    p {
+      font-family: 'Roboto', sans-serif;
+      font-size: 15px;
+      text-align: start;
+      padding: 0px;
+      margin-bottom: 6px;
+      }
+  
+    h3 {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 900;
+      font-size: 16px;
+      margin-bottom: 21px;
+      white-space: pre-wrap;
+    }
+  }
+
   .carousel-item__details-active {
     //@extend %carousel_item_details_active;
     max-width: $width-gif-phone-active-max;
@@ -218,4 +280,5 @@
     justify-content: space-around;
     flex-direction: column;
   }
+
 }

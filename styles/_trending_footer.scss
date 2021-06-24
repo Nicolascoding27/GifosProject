@@ -167,6 +167,7 @@
 
     &:hover {
         background: url('/assets/icon-fav-hover.svg');
+        background-size: cover;
     }
 }
 #download {
@@ -175,6 +176,7 @@
 
     &:hover {
         background: url('/assets/icon-download-hover.svg');
+        background-size: cover;
     }
 }
 #max{
@@ -183,6 +185,7 @@
 
     &:hover {
         background: url('/assets/icon-max-hover.svg');
+        background-size: cover;
     }
 }
 

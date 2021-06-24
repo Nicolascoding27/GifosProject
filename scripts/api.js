@@ -16,9 +16,10 @@ function create_html_gif_element(gif_elements,father_element){
     //create html gif elements inside a html father element
 
     let gif_html_element = ''
+    let principal_container = father_element.classList
     //data, pagination /meta
     console.log(gif_elements.data)
-    console.log(`META ${father_element}`, gif_elements.meta)
+    console.log(`Father element ${principal_container[0]}`, gif_elements.meta)
     //create a HTML render element
     for (let index_gif = 0; index_gif < gif_elements.data.length; index_gif++) {
         //create the gif element
@@ -72,6 +73,13 @@ function assign_events_items(father_element) {
                 carousel_item_details.classList.add('carousel-item__details-active')
                 carousel_item_details_buttons.querySelector('#max').hidden=true
                 modal_close.hidden=false
+
+                if(father_element.classList[0]==='main__container_results'){
+                    carousel_item_details_info.classList.remove('carousel-item__info')
+                    carousel_item_details_info.classList.add('carousel-item__info_active')
+                    carousel_item_details_buttons.classList.remove('carousel-item__buttons')
+                    carousel_item_details_buttons.classList.add('carousel-item__buttons_active')
+                }
             })
             
             if(modal_close){
@@ -87,6 +95,13 @@ function assign_events_items(father_element) {
                     carousel_item_details.classList.add('carousel-item__details')
                     carousel_item_details_buttons.querySelector('#max').hidden=false
                     modal_close.hidden=true
+
+                    if(father_element.classList[0]==='main__container_results'){
+                        carousel_item_details_info.classList.add('carousel-item__info')
+                        carousel_item_details_info.classList.remove('carousel-item__info_active')
+                        carousel_item_details_buttons.classList.add('carousel-item__buttons')
+                        carousel_item_details_buttons.classList.remove('carousel-item__buttons_active')
+                    }
                 }
             }
 
