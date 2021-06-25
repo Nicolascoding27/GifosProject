@@ -11,15 +11,9 @@ const icon = searchWrapper.querySelector(".main__container--serachbox--icon")
 const icon_search = icon.querySelector("i")
 const icon_search_active = searchWrapper.querySelector(".main__container--searchbox--icon-active")
 
-let linkTag = searchWrapper.querySelector("a");
 let webLink;
 const icon_list_options = '<i class="fas fa-search"></i>'
 //--------------------------------------------------------------------------
-
-//changes icons with hover event in carousel section-----------------------
-
-
-//-------------------------------------------------------------------------
 
 function toggleMenu() {
   /* 
@@ -50,46 +44,66 @@ menuLinks.forEach(
 //search suggestions-----------------------------------------------
 // if user press any key and release
 
-function search_option(user_option){
-  webLink = "https://www.google.com/search?q=" + user_option
-  linkTag.setAttribute("href", webLink)
-  console.log(webLink)
-  linkTag.click()
+function clean_search_bar(){
+  inputBox.value = ''
+  searchWrapper.classList.remove("active") //hide autocomplete box
+  icon_search.classList.add("fa-search")
+  icon_search.classList.remove("fa-times")
+  icon_search_active.hidden = true
 }
 
 inputBox.onkeyup = (e)=>{
   let userData = e.target.value //user entered data
   let emptyArray = []
   if(userData){
-      icon.onclick = ()=>{
-          search_option(userData)
-      }
 
-      emptyArray = suggestions.filter((data)=>{
-          //filtering array value and user characters to lowercase and return only those words which are start with user enetered chars
-          return data.toLocaleLowerCase().includes(userData.toLocaleLowerCase())
-      });
-      emptyArray = emptyArray.map((data)=>{
-          // passing return data inside li tag
-          return `<div>${icon_list_options}<li>${data}</li> </div>`
-      });
-      searchWrapper.classList.add("active") //show autocomplete box
-      icon_search.classList.remove("fa-search")
-      icon_search.classList.add("fa-times")
-      icon_search_active.hidden = false
+    icon.onclick = ()=>{
+      clean_search_bar()
+    }
 
-      showSuggestions(emptyArray)
-      let allList = suggBox.querySelectorAll("li")
-      for (let i = 0; i < allList.length; i++) {
-          //adding onclick attribute in all li tag
-          allList[i].setAttribute("onclick", "select(this)")
+    icon_search_active.onclick = ()=>{
+      init_search(userData)
+      clean_search_bar()
+    }
+
+    emptyArray = suggestions.filter((data)=>{
+      //filtering array value and user characters to lowercase and return only those words which are start with user enetered chars
+      return data.toLocaleLowerCase().includes(userData.toLocaleLowerCase())
+    });
+    emptyArray = emptyArray.map((data)=>{
+      // passing return data inside li tag
+      return `<div>${icon_list_options}<li>${data}</li> </div>`
+    });
+    searchWrapper.classList.add("active") //show autocomplete box
+    icon_search.classList.remove("fa-search")
+    icon_search.classList.add("fa-times")
+    icon_search_active.hidden = false
+
+    showSuggestions(emptyArray)
+    let allList = suggBox.querySelectorAll("li")
+    let icons_search_sugg = suggBox.querySelectorAll(".fa-search")
+    for (let i = 0; i < allList.length; i++) {
+      //adding onclick attribute in all li tag
+      allList[i].setAttribute("onclick", "select(this)")
+      icons_search_sugg[i].onclick = () => {
+        init_search(allList[i].textContent)
+        clean_search_bar()
       }
+    }
+
+    if(e.key === 'Enter'){
+      //Enter search event
+      init_search(userData)
+      searchWrapper.classList.remove("active")
+      clean_search_bar()
+    }
   }else{
-      searchWrapper.classList.remove("active") //hide autocomplete box
-      icon_search.classList.add("fa-search")
-      icon_search.classList.remove("fa-times")
-      icon_search_active.hidden = true
-      icon.onclick = undefined
+    searchWrapper.classList.remove("active") //hide autocomplete box
+    icon_search.classList.add("fa-search")
+    icon_search.classList.remove("fa-times")
+    icon_search_active.hidden = true
+    icon.onclick = undefined
+    icon_search_active.onclick = undefined
   }
 }
 
@@ -99,11 +113,6 @@ function select(element){
   */
   let selectData = element.textContent
   inputBox.value = selectData
-  icon.onclick = ()=>{
-      webLink = "https://www.google.com/search?q=" + selectData
-      linkTag.setAttribute("href", webLink)
-      linkTag.click()
-  }
   searchWrapper.classList.remove("active")
 }
 
@@ -113,10 +122,10 @@ function showSuggestions(list){
   */
   let listData
   if(!list.length){
-      userValue = inputBox.value
-      listData = `<div>${icon_list_options} <li>${userValue}</li> </div>`
+    userValue = inputBox.value
+    listData = `<div>${icon_list_options} <li>${userValue}</li> </div>`
   }else{
-      listData = list.join('')
+    listData = list.join('')
   }
   suggBox.innerHTML = listData
 }

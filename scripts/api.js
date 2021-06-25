@@ -16,10 +16,10 @@ function create_html_gif_element(gif_elements,father_element){
     //create html gif elements inside a html father element
 
     let gif_html_element = ''
-    let principal_container = father_element.classList
     //data, pagination /meta
     console.log(gif_elements.data)
-    console.log(`Father element ${principal_container[0]}`, gif_elements.meta)
+    //console.log(`Father element ${principal_container[0]}`, gif_elements.meta)
+
     //create a HTML render element
     for (let index_gif = 0; index_gif < gif_elements.data.length; index_gif++) {
         //create the gif element
@@ -145,7 +145,7 @@ async function init_search(search_option) {
         const limit_search = 10
         let url = `https://api.giphy.com/v1/gifs/search?api_key=${APIKEY}&limit=${limit_search}&q=${search_option}`
         const res = await fetch(url)
-        let gif_trending_res = await res.json()
+        let gif_trending_res = await res.json() //puedo guardarlo--
         create_html_gif_element(gif_trending_res,search_container_list)
         assign_events_items(search_container_list)
 
@@ -155,4 +155,3 @@ async function init_search(search_option) {
 }
 
 document.addEventListener('DOMContentLoaded', init_trending)
-init_search('father')
