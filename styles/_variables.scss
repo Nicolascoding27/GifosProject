@@ -2,6 +2,7 @@ $purple:#572EE5;
 $light-green:#50E3C2;
 $gray:#6B7989;
 $roboto:'Roboto-Regular','Roboto';
+$montserrat: 'Montserrat', sans-serif;
 
 //trending variables
 $width-trending-phone: 243px;
@@ -17,7 +18,7 @@ $height-gif-phone-active-max: 380px;
 
 //Mixins
 @mixin carousel_item($width, $height) {
-    background-color: #572EE5;
+    background-color: $purple;
     width: $width;
     height: $height;
     overflow: hidden;
@@ -59,4 +60,36 @@ $height-gif-phone-active-max: 380px;
         //active color
         opacity: 1;
     }
+}
+
+//general classes
+.button_more {
+    display: none;
+    width: 127px;
+    height: 50px;
+    border-radius: 25px;
+    border: solid 1px $purple;
+    margin-bottom: 76px;
+    color: $purple;
+    font-family: $montserrat;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-align: center;
+    transition: all 0.5s;
+    cursor: pointer;
+
+    p {
+        align-self: center;
+        justify-self: center;
+        width: 100%;
+    }
+
+    &:hover {
+        background-color: $purple;
+        color: #fff;
+    }
+}
+
+.visible {
+    display: flex;
 }

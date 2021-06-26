@@ -17,6 +17,7 @@ function create_html_gif_element(gif_elements,father_element){
 
     let gif_html_element = ''
     //data, pagination /meta
+    console.log(gif_elements)
     console.log(gif_elements.data)
     //console.log(`Father element ${principal_container[0]}`, gif_elements.meta)
 
@@ -136,22 +137,27 @@ async function init_trending() {
 
 //search API section -----------------------------------------------
 
-async function init_search(search_option) {
+async function init_search(search_option,offset=0) {
     /**
      * This function generates a request to api in search endpoint
      * and show 12 search results per page
      */
     try {
         const limit_search = 10
-        let url = `https://api.giphy.com/v1/gifs/search?api_key=${APIKEY}&limit=${limit_search}&q=${search_option}`
+        let url = `https://api.giphy.com/v1/gifs/search?api_key=${APIKEY}&limit=${limit_search}&offset=${offset}&q=${search_option}`
         const res = await fetch(url)
         let gif_trending_res = await res.json() //puedo guardarlo--
         create_html_gif_element(gif_trending_res,search_container_list)
         assign_events_items(search_container_list)
+        search_container_list.classList.add('margin_search_active')
 
     } catch (err) {
         console.error(err)
     }
+}
+
+function clean_search_list(){
+    search_container_list.innerHTML = ''
 }
 
 document.addEventListener('DOMContentLoaded', init_trending)
