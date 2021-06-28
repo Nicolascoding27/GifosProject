@@ -1,6 +1,18 @@
+//global variables
+/* 
+total_searches ---> indicates total amount of results in a query, 
+                    in the search list section
+search_offset  ---> indicates the actual offset position
+actual_search_option ---> save the actual search query term
+*/
+let total_searches = 0
+let search_offset = 0
+let actual_search_option = ''
+
 //inputBox --> input_search
 const search_main_container = document.querySelector('.main__container')
 const search_container_list = search_main_container.querySelector('#result_list')
+const button_more_results = search_main_container.querySelector('#button_list') 
 
 //trending father html elements-----------------------------
 const trending_element = document.querySelector('.trending')
@@ -115,6 +127,26 @@ function assign_events_items(father_element) {
     )
 }
 
+function button_query_action(){
+    search_offset += 12
+    if (total_searches - search_offset <= 12){
+        button_more_results.classList.remove('visible')
+        button_more_results.onclick = undefined
+    }
+    init_search(actual_search_option,search_offset,false)
+}
+
+function init_button_search_list(gif_query_res) {
+    total_searches = gif_query_res.pagination.total_count
+    console.log(`pagination object ${gif_query_res.pagination}`)
+    search_offset = 0
+    button_more_results.classList.add('visible')
+    button_more_results.onclick = () => {
+        //poner función de search query
+        button_query_action()
+    }
+}
+
 async function init_trending() {
     /**
      * This function generates a request to api in trending endpoint
@@ -137,19 +169,24 @@ async function init_trending() {
 
 //search API section -----------------------------------------------
 
-async function init_search(search_option,offset=0) {
+async function init_search(search_option,offset=0,new_query=true) {
     /**
      * This function generates a request to api in search endpoint
      * and show 12 search results per page
      */
     try {
-        const limit_search = 10
+        const limit_search = 12
         let url = `https://api.giphy.com/v1/gifs/search?api_key=${APIKEY}&limit=${limit_search}&offset=${offset}&q=${search_option}`
         const res = await fetch(url)
         let gif_trending_res = await res.json() //puedo guardarlo--
         create_html_gif_element(gif_trending_res,search_container_list)
         assign_events_items(search_container_list)
         search_container_list.classList.add('margin_search_active')
+
+        if(new_query){
+            actual_search_option = search_option
+            init_button_search_list(gif_trending_res)
+        }
 
     } catch (err) {
         console.error(err)

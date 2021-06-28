@@ -12,7 +12,6 @@ const icon = searchWrapper.querySelector(".main__container--serachbox--icon")
 const icon_search = icon.querySelector("i")
 const icon_search_active = searchWrapper.querySelector(".main__container--searchbox--icon-active")
 
-let webLink;
 const icon_list_options = '<i class="fas fa-search"></i>'
 //--------------------------------------------------------------------------
 
