@@ -34,18 +34,19 @@ function create_html_gif_element(gif_elements,father_element){
     //console.log(`Father element ${principal_container[0]}`, gif_elements.meta)
 
     //create a HTML render element
+    //download="${gif_elements.data[index_gif].images.downsized.url}"
     for (let index_gif = 0; index_gif < gif_elements.data.length; index_gif++) {
         //create the gif element
         gif_html_element += `
         <div class="bg-modal">
             <span class="bg-modal__modal-close" hidden><i class="fas fa-times"></i></span>
-            <div class="carousel-item">
-                <img class="carousel-item__img" src="${gif_elements.data[index_gif].images.downsized.url}" alt="${gif_elements.data[index_gif].title}">
+            <div id="${gif_elements.data[index_gif].id}" class="carousel-item">
+                <img class="carousel-item__img" src="${gif_elements.data[index_gif].images.original.url}" alt="${gif_elements.data[index_gif].title}">
                 <div class="carousel-item__details item-detail">
 
                     <div class="carousel-item__buttons item-buttons">
                         <div id="favorite" aria-labelledby="favorite_icon"></div>
-                        <div id="download" aria-labelledby="download"></div>
+                        <div id="download" aria-labelledby="download"><a href="#" download></a></div>
                         <div id="max" aria-labelledby="maximize"></div>
                     </div>
 
@@ -62,6 +63,32 @@ function create_html_gif_element(gif_elements,father_element){
     father_element.innerHTML += gif_html_element
 }
 
+async function download(id_element,element){
+    /* 
+    this function creates a request to gif by id endpoint
+    creates a local object with URL.createObjectURL
+    and generates a download with the event click
+    */
+
+    const url_query_gif = `https://media0.giphy.com/media/${id_element}/giphy.gif`
+    const response = await fetch(url_query_gif)
+    let file = await response.blob()
+    file = URL.createObjectURL(file)
+    element.setAttribute("href",file)
+    element.onclick = (event) => {
+        event.stopPropagation()
+    }
+    element.click() //se propaga el evento
+    URL.revokeObjectURL(element.href)
+}
+//https://media0.giphy.com/media/${id}/giphy.gif
+
+/* let response =  fetch(link)
+let file = response.blob()
+a.href = window.URL.createObjectURL(file);
+a.click() */
+
+
 function assign_events_items(father_element) {
     //initialization of events in trending topic section
     bg_modal_items = father_element.querySelectorAll(':scope > div')
@@ -73,7 +100,9 @@ function assign_events_items(father_element) {
             const carousel_item_details = carousel_item.querySelector('.item-detail')
             const carousel_item_details_buttons = carousel_item_details.querySelector('.item-buttons')
             const carousel_item_details_info = carousel_item_details.querySelector('.item-info')
-            //const favorite_button = carousel_item.querySelector('#favorite')
+            const favorite_button = carousel_item.querySelector('#favorite')
+            const download_button = carousel_item.querySelector('#download')
+
             modal_close.hidden= true
             carousel_item.addEventListener("click", ()=> {
                 //set the modal style in a gif item
@@ -118,11 +147,21 @@ function assign_events_items(father_element) {
                 }
             }
 
-            /* //save state of favorite button
-            favorite_button.onclick = () => {
+            //save state of favorite button
+            favorite_button.onclick = (event) => {
                 //save in localstorage
+                event.stopPropagation()
 
-            } */
+            }
+
+            download_button.onclick = (event) => {
+                //save in localstorage
+                const gif_id = carousel_item.getAttribute('id')
+                const link_download = download_button.querySelector('a')
+                download(gif_id,link_download)
+                event.stopPropagation()
+            }
+
         }
     )
 }
