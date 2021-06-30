@@ -9,6 +9,9 @@ let total_searches = 0
 let search_offset = 0
 let actual_search_option = ''
 
+//initialize favorite localstorage
+localStorage.setItem("favorites",JSON.stringify([]))
+
 //inputBox --> input_search
 const search_main_container = document.querySelector('.main__container')
 const search_container_list = search_main_container.querySelector('#result_list')
@@ -45,7 +48,7 @@ function create_html_gif_element(gif_elements,father_element){
                 <div class="carousel-item__details item-detail">
 
                     <div class="carousel-item__buttons item-buttons">
-                        <div id="favorite" aria-labelledby="favorite_icon"></div>
+                        <div id="favorite" class="favorite" aria-labelledby="favorite_icon"></div>
                         <div id="download" aria-labelledby="download"><a href="#" download></a></div>
                         <div id="max" aria-labelledby="maximize"></div>
                     </div>
@@ -61,6 +64,16 @@ function create_html_gif_element(gif_elements,father_element){
     }
     //----------------------------
     father_element.innerHTML += gif_html_element
+}
+
+function toggle_favorite(element){
+    if(element.classList.contains("favorite")){
+        element.classList.remove("favorite")
+        element.classList.add("favorite_active")
+    }else {
+        element.classList.add("favorite")
+        element.classList.remove("favorite_active")
+    }
 }
 
 async function download(id_element,element){
@@ -82,7 +95,6 @@ async function download(id_element,element){
     URL.revokeObjectURL(element.href)
 }
 //https://media0.giphy.com/media/${id}/giphy.gif
-
 /* let response =  fetch(link)
 let file = response.blob()
 a.href = window.URL.createObjectURL(file);
@@ -102,6 +114,8 @@ function assign_events_items(father_element) {
             const carousel_item_details_info = carousel_item_details.querySelector('.item-info')
             const favorite_button = carousel_item.querySelector('#favorite')
             const download_button = carousel_item.querySelector('#download')
+
+            const gif_id = carousel_item.getAttribute('id')
 
             modal_close.hidden= true
             carousel_item.addEventListener("click", ()=> {
@@ -150,13 +164,23 @@ function assign_events_items(father_element) {
             //save state of favorite button
             favorite_button.onclick = (event) => {
                 //save in localstorage
+                let favorites = JSON.parse(localStorage.getItem("favorites"))
+                const in_favorites = (element) => element === gif_id
+                if (favorites.length === 0){
+                    favorites.push(gif_id)
+                }else if (!favorites.some(in_favorites)){
+                    favorites.push(gif_id)
+                }else {
+                    favorites = favorites.filter(element => element !== gif_id)
+                }
+                localStorage.setItem("favorites",JSON.stringify(favorites))
+                toggle_favorite(favorite_button)
                 event.stopPropagation()
 
             }
 
             download_button.onclick = (event) => {
-                //save in localstorage
-                const gif_id = carousel_item.getAttribute('id')
+                //download a gif element
                 const link_download = download_button.querySelector('a')
                 download(gif_id,link_download)
                 event.stopPropagation()

@@ -161,7 +161,7 @@
     cursor: pointer;
 }
 
-#favorite {
+.favorite {
     background: url('/assets/icon-fav.svg') center no-repeat ;
     background-size: cover;
 
@@ -170,6 +170,12 @@
         background-size: cover;
     }
 }
+
+.favorite_active {
+    background: url('/assets/icon-fav-active.svg') center no-repeat;
+    background-size: cover;
+}
+
 #download {
     background: url('/assets/icon-download.svg') center no-repeat ;
     background-size: cover;
@@ -179,6 +185,7 @@
         background-size: cover;
     }
 }
+
 #max{
     background: url('/assets/icon-max-normal.svg') center no-repeat ;
     background-size: cover;
