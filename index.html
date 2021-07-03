@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="shortcut icon" type="image/jpg" href="assets/favicon.png"/>
     <link rel="stylesheet" href="/styles/styles.css">
     <title>Gifos project</title>
 </head>
@@ -37,7 +38,6 @@
             <!-- sección de barra de busqueda -->
             <div class="main__container--wrapper">
                 <div class="main__container--searchbox">
-                  <a href="" target="_blank" hidden></a>
                   <div class="main__container--searchbox--icon-active" hidden=true><i class="fas fa-search"></i></div>
                   <input type="text" placeholder="Busca GIFOS y más">
                   <div class="gray-line"></div>
@@ -52,32 +52,43 @@
                 <h1 class="main__container--trends--title">Trending:</h1>
                 <p class="main__container--trends--text"> Reactions, Entertainment, Sports, Stickers, Artists </p>
             </div>
+            <hr hidden>
+            <h1 class="main__container_results_title"></h1>
+            
+            <div id="result_list" class="main__container_results"></div> <!-- here search results are inserted from javascript -->
+            <div id="button_list" class="button_more"><p>ver más</p></div>
         </div>
     </main>
+    
     <section class="trending">
         <h1 class="title">Trending GIFOS</h1>
         <p>Mira los últimos <br> GIFOS de nuestra comunidad.</p> <!-- cambiar desde JS -->
 
         <div class="carousel">
-            <div class="carousel-item">
-                <!-- temporal mientras se establece la conexion con la API -->
-                <img class="carousel-item__img" src="https://media4.giphy.com/media/TP34h0XAWrjgZEQWnP/giphy-downsized.gif?cid=0fbcb9cbvhwcw3aki4n104rz4t8pwocjze23zqni8i440hsv&rid=giphy-downsized.gif&ct=g" alt="cat laught">
-                <div class="carousel-item__details">
-                    <!-- posicionar botones -->
-                    <div class="carousel-item__buttons">
-                        <img id="favorite" src="/assets/icon-fav.svg" alt="favorite_icon">
-                        <img id="download" src="/assets/icon-download.svg" alt="favorite_icon">
-                        <img id="max" src="/assets/icon-max-normal.svg" alt="favorite_icon">
-                    </div>
-                    <div class="carousel-item__info">
-                        <p>User</p>
-                        <h3>Im Out See Ya GIF by ALL ELITE WRESTLING</h3>
-                    </div>
-                </div>
+
+            <div class="bg-modal">
+              <span class="bg-modal__modal-close" hidden><i class="fas fa-times"></i></span>
+              <div class="carousel-item">
+                  <!-- temporal mientras se establece la conexion con la API -->
+                  <img class="carousel-item__img" src="/assets/foto_estudiante_santiago_rios_Easy-Resize.com.jpg" alt="cat laught">
+                  <div class="carousel-item__details item-detail">
+                      <!-- posicionar botones -->
+                      <div class="carousel-item__buttons item-buttons">
+                          <div id="favorite" class="favorite" aria-labelledby="favorite_icon"></div>
+                          <div id="download" aria-labelledby="download"></div>
+                          <div id="max" aria-labelledby="maximize"></div>
+                      </div>
+                      <div class="carousel-item__info item-info">
+                          <p>User</p>
+                          <h3>Im Out See Ya GIF by ALL ELITE WRESTLING</h3>
+                      </div>
+                  </div>
+              </div>
             </div>
 
         </div>
-    </section>
+      </section>
+
     <footer class="footer">
         <p class="footer__text">Compartir en:</p>
         <ul>
@@ -87,8 +98,8 @@
         </ul>
         <p class="footer__text">© GIFOS 2020 All Rights Reserved</p>
     </footer>
+  <script src="./scripts/api.js"></script>
   <script src="./scripts/suggestions.js"></script>
   <script src="./scripts/script.js"></script>
-  <script src="./scripts/api.js"></script>
 </body>
 </html>
