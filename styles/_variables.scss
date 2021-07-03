@@ -2,4 +2,94 @@ $purple:#572EE5;
 $light-green:#50E3C2;
 $gray:#6B7989;
 $roboto:'Roboto-Regular','Roboto';
+$montserrat: 'Montserrat', sans-serif;
+
+//trending variables
 $width-trending-phone: 243px;
+$height-trending-phone: 187px;
+
+//search variable
+$width-search-phone: 156px;
+$height-search-phone: 120px;
+
+//active modals gif items
+$width-gif-phone-active-max: 280px;
+$height-gif-phone-active-max: 380px;
+
+//Mixins
+@mixin carousel_item($width, $height) {
+    background-color: $purple;
+    width: $width;
+    height: $height;
+    overflow: hidden;
+    
+    display: inline-block; //maybe change
+    cursor: pointer;
+    transition: 450ms all;
+    transform-origin: center left;
+    position: relative;
+    
+}
+
+@mixin carousel_item_img($width, $height) {
+    width: $width;
+    height: $height;
+    
+    object-fit: cover;
+}
+
+@mixin carousel_item_details($width) {
+    background: rgba(87, 46, 229,0.6);
+    width: $width;
+    font-size: 10px;
+    color:white;
+    opacity: 0;
+    transition: 450ms opacity;
+    padding: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    //position
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+
+    &:hover {
+        //active color
+        opacity: 1;
+    }
+}
+
+//general classes
+.button_more {
+    display: none;
+    width: 127px;
+    height: 50px;
+    border-radius: 25px;
+    border: solid 1px $purple;
+    margin-bottom: 76px;
+    color: $purple;
+    font-family: $montserrat;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-align: center;
+    transition: all 0.5s;
+    cursor: pointer;
+
+    p {
+        align-self: center;
+        justify-self: center;
+        width: 100%;
+    }
+
+    &:hover {
+        background-color: $purple;
+        color: #fff;
+    }
+}
+
+.visible {
+    display: flex;
+}

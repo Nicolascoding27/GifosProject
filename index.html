@@ -2,63 +2,89 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
-    integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="/styles/styles.css">
-  <title>Gifos project</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="shortcut icon" type="image/jpg" href="assets/favicon.png"/>
+    <link rel="stylesheet" href="/styles/styles.css">
+    <title>Gifos project</title>
 </head>
-
 <body>
-  <div id="line" class="line--purple"></div>
-  <header >
-    <div id="header" class="header__container">
-      <img id ="logo" class='header--logo' src="./assets/logo-mobile.svg">
-      <button id="header--toggleButton" class="header__menu--button">
-        <i class="menuIcon material-icons">
-          menu
-        </i>
-        <span class="xIcon material-icons">
-          close
-        </span>
-      </button>
-    </div>
-    <ul id="list" class="header__menu">
-      <li><a class="menuLink" id="darkModeButton" href="#">Modo Nocturno</a></li>
-      <li><a class="menuLink" href="#">Favoritos</a></li>
-      <li><a class="menuLink" href="#">Mis GIFOS</a></li>
-    </ul>
-  </header>
-  <main>
-    <div class="main__container">
-      <h1 id="title_gifos">Inspírate, busca, guarda, y crea los mejores <span>GIFOS</span> </h1>
-      <img class="main__conatiner--image" src="./assets/ilustra_header.svg">
-      <!-- sección de barra de busqueda -->
-      <div class="main__container--wrapper">
-        <div class="main__container--searchbox">
-          <a href="" target="_blank" hidden></a>
-          <div class="main__container--searchbox--icon-active" hidden=true><i class="fas fa-search"></i></div>
-          <input type="text" placeholder="Busca GIFOS y más">
-          <div class="gray-line"></div>
-          <div class="main__container--autocom-box">
-            <!-- here list are inserted from javascript -->
-          </div>
-          <div class="main__container--serachbox--icon"><i class="fas fa-search"></i></div>
+     <div class="line--purple"></div>
+    <header>
+        <div class="header__container">
+          <img class='header--logo' src="./assets/logo-mobile.svg">
+        <button class="header__menu--button">
+            <i class="menuIcon material-icons">
+              menu
+            </i>
+            <span class="xIcon material-icons">
+              close
+            </span>
+          </button>
         </div>
-      </div>
+        <ul class="header__menu" >
+            <li><a class="menuLink"  href="#">Modo Nocturno</a></li>
+            <li><a class="menuLink" href="#">Favoritos</a></li>
+            <li><a class="menuLink" href="#">Mis GIFOS</a></li>
+          </ul>
+    </header>
+    <main>
+        <div class="main__container">
+            <h1>Inspírate, busca, guarda, y crea los mejores <span>GIFOS</span> </h1>
+            <img class="main__conatiner--image" src="./assets/ilustra_header.svg">
+            <!-- sección de barra de busqueda -->
+            <div class="main__container--wrapper">
+                <div class="main__container--searchbox">
+                  <div class="main__container--searchbox--icon-active" hidden=true><i class="fas fa-search"></i></div>
+                  <input type="text" placeholder="Busca GIFOS y más">
+                  <div class="gray-line"></div>
+                  <div class="main__container--autocom-box">
+                    <!-- here list are inserted from javascript -->
+                  </div>
+                  <div class="main__container--serachbox--icon"><i class="fas fa-search"></i></div>
+                </div>
+            </div>
 
-      <div id="main--gifos"class="main__container--trends">
-        <h2 class="main__container--trends--title">Trending:</h2>
-        <p class="main__container--trends--text"> Reactions, Entertainment, Sports, Stickers, Artists </p>
-      </div>
-    </div>
-  </main>
-  <section id="trending"class="trending">
-    <h1 id="trending--title" class="title">Trending GIFOS</h1>
-    <p>Mira los últimos <br> GIFOS de nuestra comunidad.</p> <!-- cambiar desde JS -->
+            <div class="main__container--trends">
+                <h1 class="main__container--trends--title">Trending:</h1>
+                <p class="main__container--trends--text"> Reactions, Entertainment, Sports, Stickers, Artists </p>
+            </div>
+            <hr hidden>
+            <h1 class="main__container_results_title"></h1>
+            
+            <div id="result_list" class="main__container_results"></div> <!-- here search results are inserted from javascript -->
+            <div id="button_list" class="button_more"><p>ver más</p></div>
+        </div>
+    </main>
+    
+    <section class="trending">
+        <h1 class="title">Trending GIFOS</h1>
+        <p>Mira los últimos <br> GIFOS de nuestra comunidad.</p> <!-- cambiar desde JS -->
+
+        <div class="carousel">
+
+            <div class="bg-modal">
+              <span class="bg-modal__modal-close" hidden><i class="fas fa-times"></i></span>
+              <div class="carousel-item">
+                  <!-- temporal mientras se establece la conexion con la API -->
+                  <img class="carousel-item__img" src="/assets/foto_estudiante_santiago_rios_Easy-Resize.com.jpg" alt="cat laught">
+                  <div class="carousel-item__details item-detail">
+                      <!-- posicionar botones -->
+                      <div class="carousel-item__buttons item-buttons">
+                          <div id="favorite" class="favorite" aria-labelledby="favorite_icon"></div>
+                          <div id="download" aria-labelledby="download"></div>
+                          <div id="max" aria-labelledby="maximize"></div>
+                      </div>
+                      <div class="carousel-item__info item-info">
+                          <p>User</p>
+                          <h3>Im Out See Ya GIF by ALL ELITE WRESTLING</h3>
+                      </div>
+                  </div>
+              </div>
+            </div>
 
     <div class="carousel">
       <div class="carousel-item">
@@ -78,22 +104,20 @@
             <h3>Im Out See Ya GIF by ALL ELITE WRESTLING</h3>
           </div>
         </div>
-      </div>
+      </section>
 
-    </div>
-  </section>
-  <footer class="footer" id="footer">
-    <p class="footer__text">Compartir en:</p>
-    <ul>
-      <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-      <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-      <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-    </ul>
-    <p class="footer__text">© GIFOS 2020 All Rights Reserved</p>
-  </footer>
+    <footer class="footer">
+        <p class="footer__text">Compartir en:</p>
+        <ul>
+            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+        <p class="footer__text">© GIFOS 2020 All Rights Reserved</p>
+    </footer>
+  <script src="./scripts/api.js"></script>
   <script src="./scripts/suggestions.js"></script>
   <script src="./scripts/script.js"></script>
-  <script src="./scripts/api.js"></script>
 </body>
 
 </html>
