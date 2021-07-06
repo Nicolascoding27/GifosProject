@@ -5,19 +5,30 @@
     align-items: center;
     justify-content: center;
     h1{
-        width: 286px; 
-        font-family: 'Montserrat', sans-serif;
-        font-size: 25px;
-        color: $purple;
-        text-align: center;
-        line-height: 33px;
-        span{
-            color: $light-green;
-        }
+      width: 286px; 
+      font-family: 'Montserrat', sans-serif;
+      font-size: 25px;
+      color: $purple;
+      text-align: center;
+      line-height: 33px;
+      span{
+          color: $light-green;
+      }
     }
+
+    #title_gifos.favorite-title{
+      margin: 7px 0px 8px 0px;
+      font-size: 20px
+    }
+
     .main__conatiner--image{
-        margin-top: 31px;
-        width: 273px;
+      margin-top: 31px;
+      width: 273px;
+    }
+
+    .main__conatiner--image-favorite {
+      margin-top: 5px;
+      width: 28px;
     }
 
     //search section---------------------------------------------------------
@@ -294,4 +305,8 @@
 
 .margin_search_active{
   margin: 38px 0px 78px 0px;
+}
+
+.main-mg {
+  margin-top: 0px;
 }

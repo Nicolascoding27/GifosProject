@@ -10,7 +10,10 @@ let search_offset = 0
 let actual_search_option = ''
 
 //initialize favorite localstorage
-localStorage.setItem("favorites",JSON.stringify([]))
+if (!localStorage.getItem("favorites")){
+    localStorage.setItem("favorites",JSON.stringify([]))
+}
+
 
 //inputBox --> input_search
 const search_main_container = document.querySelector('.main__container')
@@ -199,9 +202,8 @@ function button_query_action(){
     init_search(actual_search_option,search_offset,false)
 }
 
-function init_button_search_list(gif_query_res) {
-    total_searches = gif_query_res.pagination.total_count
-    console.log(`pagination object ${gif_query_res.pagination}`)
+function init_button_search_list(gif_query_res_total_results) {
+    total_searches = gif_query_res_total_results
     search_offset = 0
     button_more_results.classList.add('visible')
     button_more_results.onclick = () => {
@@ -217,7 +219,7 @@ async function init_trending() {
      */
     
     try {
-        const limit_search = 10
+        const limit_search = 10 //25
         let url = `https://api.giphy.com/v1/gifs/trending?api_key=${APIKEY}&limit=${limit_search}`
         const res = await fetch(url)
         let gif_trending_res = await res.json()
@@ -248,7 +250,28 @@ async function init_search(search_option,offset=0,new_query=true) {
 
         if(new_query){
             actual_search_option = search_option
-            init_button_search_list(gif_trending_res)
+            init_button_search_list(gif_trending_res.pagination.total_count)
+        }
+
+    } catch (err) {
+        console.error(err)
+    }
+}
+
+async function init_favorites(id_element) {
+    /**Function
+     * This function generates a request to api in id endpoint
+     * show the favorites gifs in local storage
+     */
+    try {
+        const url = `https://api.giphy.com/v1/gifs/${id_element}?api_key=${APIKEY}`
+        const res = await fetch(url)
+        let gif_trending_res = await res.json()
+        gif_trending_res.data = [gif_trending_res.data]
+        create_html_gif_element(gif_trending_res,search_container_list)
+        assign_events_items(search_container_list)
+        if (!search_container_list.classList.contains("margin_search_active")){
+            search_container_list.classList.add('margin_search_active')
         }
 
     } catch (err) {
@@ -261,3 +284,17 @@ function clean_search_list(){
 }
 
 document.addEventListener('DOMContentLoaded', init_trending)
+
+//initialize favorite localstorage gifs
+if (!document.querySelector(".main__container--searchbox")){
+    let favorites = JSON.parse(localStorage.getItem("favorites"))
+
+    if (favorites.length !== 0){
+        favorites.forEach( gif_id => {
+            init_favorites(gif_id)
+        })
+        init_button_search_list(favorites.length)
+    }
+
+}
+//implement active favorite button and live remove
