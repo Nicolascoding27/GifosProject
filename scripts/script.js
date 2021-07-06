@@ -14,7 +14,7 @@ let logo = document.getElementById('logo');
 let trending=document.getElementById('trending');
 let trendingTitle=document.getElementById('trending--title');
 let footer = document.getElementById('footer');
-var x= Window.matchMedia("(max-width:700px")
+// var x= Window.matchMedia("max-width:700px");
 //getting elements in the search section-----------------------------------
 const searchWrapper = document.querySelector(".main__container--searchbox")
 const title_search = document.querySelector(".main__container_results_title")
@@ -23,7 +23,6 @@ const suggBox = searchWrapper.querySelector(".main__container--autocom-box")
 const icon = searchWrapper.querySelector(".main__container--serachbox--icon")
 const icon_search = icon.querySelector("i")
 const icon_search_active = searchWrapper.querySelector(".main__container--searchbox--icon-active")
-
 const icon_list_options = '<i class="fas fa-search"></i>'
 //--------------------------------------------------------------------------
 /**Function that aims to show the hamburger menu */
@@ -65,7 +64,10 @@ function clean_search_bar(clean_title){
   icon_search_active.hidden = true
   title_search.textContent = clean_title ? '' : title_search.textContent
 }
-
+/**
+ * Asigna eventos de onclick a las lupas 
+ * @param {*} html_father_sugg 
+ */
 function assign_events_search_options(html_father_sugg){
   let allList = html_father_sugg.querySelectorAll("li")
   let icons_search_sugg = html_father_sugg.querySelectorAll(".fa-search")
@@ -165,7 +167,6 @@ function showSuggestions(list){
 nightModeButton.addEventListener("click", activateDarkMode)
 function activateDarkMode() {
   // console.log(document.body.style.backgroundColor)
-  console.log(trending)
   if (document.body.style.backgroundColor === '') {
     title.style.color = 'white';
     header.backgroundColor = "rgb(55, 56, 60)"
@@ -181,6 +182,8 @@ function activateDarkMode() {
     trendingTitle.style.color="white";
     logo.src="./assets/logo-mobile-modo-noct.svg"
     footer.style.color="white";
+  console.log(trending)
+    footer.classList.add('footer-active');
   }
   else if (document.body.style.backgroundColor == "rgb(55, 56, 60)") {
     title.style.color = "rgb(87, 46, 229)";
@@ -196,6 +199,7 @@ function activateDarkMode() {
     trending.style.color="black";
     trendingTitle.style.color="rgb(87, 46, 229)";
     footer.style.color="black";
+    footer.classList.remove('footer-active');
     
   }
 }

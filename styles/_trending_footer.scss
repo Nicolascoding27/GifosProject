@@ -255,3 +255,8 @@
     }
 }
 
+.footer-active{
+    &::after {
+        background: #37383C;
+    }
+}
