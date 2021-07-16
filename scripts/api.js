@@ -23,7 +23,7 @@ if (!localStorage.getItem("favorites")){
 }
 
 
-//inputBox --> input_search
+//inputBox --> input_search--------------------------------
 const search_main_container = document.querySelector('.main__container')
 const search_container_list = search_main_container.querySelector('#result_list')
 const button_more_results = search_main_container.querySelector('#button_list') 
@@ -32,6 +32,9 @@ const button_more_results = search_main_container.querySelector('#button_list')
 const trending_element = document.querySelector('.trending')
 const carousel = trending_element.querySelector('.carousel')
 let bg_modal_items
+
+//empty elements list---------------------------------------
+let list_no_result = search_main_container.querySelector(".main__container_no-result")
 //----------------------------------------------------------
 
 APIKEY= "DCAxXJyKXP7rMfWdncYE04ImQn07Cvfg"
@@ -52,10 +55,15 @@ function init_button_search_list(gif_query_res_total_results, option=0) {
     total_searches = gif_query_res_total_results
     search_offset = 0
     button_more_results.classList.add('visible')
-    button_more_results.onclick = () => {
-        if (option === 0) button_query_action()
-        else if (option === 1) button_query_favorite_action()
-        
+    if (option === 0){
+        button_more_results.onclick = () => {
+            button_query_action()
+        }
+    }
+    if (option === 1){
+        button_more_results.onclick = () => {
+            button_query_favorite_action()
+        }
     }
 }
 
@@ -93,6 +101,8 @@ async function init_search(search_option,offset=0,new_query=true) {
         let url = `https://api.giphy.com/v1/gifs/search?api_key=${APIKEY}&limit=${limit_search}&offset=${offset}&q=${search_option}`
         const res = await fetch(url)
         let gif_trending_res = await res.json() //puedo guardarlo--
+        search_container_list.classList.remove("hidden")
+        list_no_result.classList.remove("visible_no_result")
         create_html_gif_element(gif_trending_res,search_container_list)
         assign_events_items(search_container_list)
         search_container_list.classList.add('margin_search_active')
@@ -100,6 +110,12 @@ async function init_search(search_option,offset=0,new_query=true) {
         if(new_query){
             actual_search_option = search_option
             init_button_search_list(gif_trending_res.pagination.total_count)
+        }
+
+        if(gif_trending_res.data.length === 0) {
+            search_container_list.classList.add("hidden")
+            button_more_results.classList.remove("visible")
+            list_no_result.classList.add("visible_no_result")
         }
 
     } catch (err) {
@@ -130,14 +146,16 @@ async function init_favorites(id_element) {
     }
 }
 
-function init_local_storage_gif_loop(local_storage_array) {
+function init_local_storage_gif_loop(local_storage_array,init=true) {
     
     if (local_storage_array.length !== 0){
         for (let i= initial_position; i<final_position; i++){
             if(i > (local_storage_array.length -1)) {break}
             init_favorites(local_storage_array[i])
         }
-        init_button_search_list(local_storage_array.length, option=1)
+        if (init) {init_button_search_list(local_storage_array.length, option=1)}
+    }else {
+        toggle_show_empty_messague(list_no_result,"visible_no_result")
     }
 }
 

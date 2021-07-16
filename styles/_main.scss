@@ -180,6 +180,30 @@
     }
 }
 
+.main__container_no-result{
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 150px;
+    margin-top: 109.3px;
+  }
+
+  p {
+    text-align: center;
+    font-size: 22px;
+    color: #50E3C2 ;
+    font-family: $montserrat;
+    margin: 23.7px 0px 137px 0px;
+  }
+}
+
+.visible_no_result {
+  display: flex;
+}
+
 .main__container_results {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -309,4 +333,8 @@
 
 .main-mg {
   margin-top: 0px;
+}
+
+.hidden {
+  display: none;
 }

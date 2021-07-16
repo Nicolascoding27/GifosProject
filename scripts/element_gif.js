@@ -158,6 +158,14 @@ function toggle_favorite(element){
     }
 }
 
+function toggle_show_empty_messague(element, class_name){
+    if(element.classList.contains(class_name)){
+        element.classList.remove(class_name)
+    }else {
+        element.classList.add(class_name)
+    }
+}
+
 function button_query_action(){
     /* 
     This function generates requests to giphy endpoint
@@ -176,9 +184,9 @@ function button_query_favorite_action(){
     */
     initial_position += 12
     final_position += 12
-    if (total_searches - final_position <= 12){
+    if (total_searches - final_position <= 0){
         button_more_results.classList.remove('visible')
         button_more_results.onclick = undefined
     }
-    init_local_storage_gif_loop(favorites)
+    init_local_storage_gif_loop(favorites,init=false)
 }
