@@ -42,7 +42,8 @@ function clean_search_bar(clean_title){
   
   inputBox.onkeyup = (e)=>{
     let userData = e.target.value //user entered data
-    let emptyArray = []
+    get_suggestions(userData)
+    let emptyArray = [...suggestions]
     //add title effects
     document.querySelector('.main__container').querySelector('hr').hidden=false
   
@@ -65,10 +66,11 @@ function clean_search_bar(clean_title){
   
       title_search.textContent = userData
   
-      emptyArray = suggestions.filter((data)=>{
+      /* emptyArray = suggestions.filter((data)=>{
         //filtering array value and user characters to lowercase and return only those words which are start with user enetered chars
         return data.toLocaleLowerCase().includes(userData.toLocaleLowerCase())
-      });
+      }); */
+
       emptyArray = emptyArray.map((data)=>{
         // passing return data inside li tag
         return `<div>${icon_list_options}<li>${data}</li> </div>`

@@ -66,6 +66,25 @@ function init_button_search_list(gif_query_res_total_results, option=0) {
         }
     }
 }
+//suggestion bar search API ------------------------------------------
+async function init_search_suggestions(search_option) {
+    try {
+        const limit_search = 4
+        let result_suggestion = []
+        let url = `https://api.giphy.com/v1/gifs/search/tags?api_key=${APIKEY}&limit=${limit_search}&q=${search_option}`
+        const res = await fetch(url)
+        let gif_suggestion_res = await res.json()
+        console.log(`Sugerencias aqui:`, gif_suggestion_res)
+        gif_suggestion_res.data.forEach(element => {
+            result_suggestion.push(element.name)
+        })
+        return result_suggestion
+    }catch (err) {
+        console.error(err);
+    }
+
+}
+
 
 //trending topic API section -----------------------------------------
 async function init_trending() {
