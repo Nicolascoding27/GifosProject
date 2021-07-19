@@ -235,7 +235,6 @@
   }
 
   .carousel-item__img-active {
-    //@extend %carousel_item_img_active;
     max-width: $width-gif-phone-active-max;
     max-height: $height-gif-phone-active-max;
     width: auto;
@@ -314,15 +313,16 @@
   .carousel-item__details-active {
     //@extend %carousel_item_details_active;
     max-width: $width-gif-phone-active-max;
-    width: auto;
+    width: 100%;
     font-size: 10px;
     color: black;
     margin-top: 15px;
+    gap: 10px;
     
     //position
     display: flex;
-    justify-content: space-around;
-    flex-direction: column;
+    justify-content: space-between;
+    flex-direction: row-reverse;
   }
 
 }

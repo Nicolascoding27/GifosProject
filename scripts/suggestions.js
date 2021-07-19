@@ -8,8 +8,8 @@ async function get_suggestions (data){
 
 //
 const trending_description = trending_element.querySelector('#trending__description')
-const button_carousel_previous = carousel.querySelector('#previous')
-const button_carousel_next = carousel.querySelector('#next')
+const button_carousel_previous = trending_element.querySelector('#previous')
+const button_carousel_next = trending_element.querySelector('#next')
 let translateX = 0
 let imageIndex = 1
 let width_viewport
