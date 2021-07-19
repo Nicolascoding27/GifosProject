@@ -17,7 +17,7 @@ let actual_search_option = ''
 let initial_position = 0
 let final_position = 12
 let favorites = []
-let gifs_trending = 12
+let gifs_trending = 25
 
 //initialize favorite localstorage
 if (!localStorage.getItem("favorites")){

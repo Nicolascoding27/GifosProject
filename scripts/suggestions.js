@@ -51,7 +51,7 @@ button_carousel_previous.addEventListener('click', () => {
 })
 
 button_carousel_next.addEventListener('click', () => {
-    if (imageIndex !== gifs_trending){
+    if (imageIndex !== gifs_trending-1){
         imageIndex++
         translateX -= button_step
     }
