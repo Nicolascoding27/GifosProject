@@ -8,6 +8,7 @@ actual_search_option ---> save the actual search query term
 initial_position ---> indicates the actual position in the array of gifs id's
 final_position ---> indicates the final position in the array of gifs id's
 favorites ---> array with gifs id's mark as favorite 
+gifs_trending ---> number of gifs in trending
 */
 let total_searches = 0
 let search_offset = 0
@@ -16,6 +17,7 @@ let actual_search_option = ''
 let initial_position = 0
 let final_position = 12
 let favorites = []
+let gifs_trending = 12
 
 //initialize favorite localstorage
 if (!localStorage.getItem("favorites")){
@@ -30,7 +32,8 @@ const button_more_results = search_main_container.querySelector('#button_list')
 
 //trending father html elements-----------------------------
 const trending_element = document.querySelector('.trending')
-const carousel = trending_element.querySelector('.carousel')
+const carousel = trending_element.querySelector('.carousel') //carousel__container
+const carousel_container = carousel.querySelector('.carousel__container')
 let bg_modal_items
 
 //empty elements list---------------------------------------
@@ -94,12 +97,12 @@ async function init_trending() {
      */
     
     try {
-        const limit_search = 10 //25
+        const limit_search = gifs_trending //25
         let url = `https://api.giphy.com/v1/gifs/trending?api_key=${APIKEY}&limit=${limit_search}`
         const res = await fetch(url)
         let gif_trending_res = await res.json()
-        create_html_gif_element(gif_trending_res,carousel)
-        assign_events_items(carousel)
+        create_html_gif_element(gif_trending_res,carousel_container)
+        assign_events_items(carousel_container)
 
     } catch (err) {
         console.error(err)
@@ -187,7 +190,10 @@ function clean_search_list(){
     search_container_list.innerHTML = ''
 }
 
-document.addEventListener('DOMContentLoaded', init_trending)
+document.addEventListener('DOMContentLoaded', () => {
+    init_trending()
+    media_queries_changes(window.innerWidth)
+})
 
 //initialize favorite localstorage gifs
 if (document.querySelector("#main_favorite.main__container")){

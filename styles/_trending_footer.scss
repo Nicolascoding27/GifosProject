@@ -6,7 +6,7 @@
     flex-direction: column;
     align-items: center;
 
-    p {
+    #trending__description {
         font-family: 'Roboto', sans-serif;
         font-size: 16px;
         text-align: center;
@@ -40,6 +40,42 @@
         margin-right: 22px;
     }
     
+}
+
+.carousel__container {
+    transform: translateX(0px);
+    width: 100%;
+    position: relative;
+}
+
+.carousel__container_inline {
+    display: inline;
+}
+
+.carousel--button {
+    width:40px;
+    height:40px;
+    //display: flex;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $purple;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    i {
+        font-size: 24px;
+        color: $purple;
+        transition: all 0.3s;
+    }
+
+    &:hover {
+        background-color: $purple;
+
+        i {
+            color: #fff;
+        }
+    }
 }
 
 .carousel-item {
@@ -258,5 +294,104 @@
 .footer-active{
     &::after {
         background: #37383C;
+    }
+}
+
+//media-queries------------------------------------------------
+@media screen and (min-width: 960px) and (max-width: 1264px) {
+    .trending {
+        height: 640px;
+    
+        #trending__description {
+            font-size: 18px;
+            margin-bottom: 53px;
+        }
+    }
+
+    .title {
+        margin: 67px 0px 12px 0px;
+        font-size: 25px;
+    }
+
+    .carousel {
+        width: 800px;
+        overflow-x: scroll;
+    
+        //hidden scrollbar
+        .bg-modal {
+            margin-right: 25px;
+        }
+        
+    }
+
+    .carousel--button {
+        display: flex;
+    }
+
+    .carousel-item {
+        @include carousel_item($width-trending-md,$height-trending-md);
+    }
+    
+    .carousel-item-active {
+        //@extend %carousel_item_active;
+        max-width: $width-gif-md-active-max;
+        background-color: transparent;
+        width: auto;
+        height: auto;
+        
+        display: flex; //maybe change
+        flex-direction: column;
+        align-items: center;
+        transition: 450ms all;
+        transform-origin: center left;
+        position: relative;
+    }
+    
+    /* carousel --- item---images---------------------------- */
+    
+    .carousel-item__img {
+        @include carousel_item_img($width-trending-md, $height-trending-md);
+    }
+    
+    .carousel-item__img-active {
+        max-width: $width-gif-md-active-max;
+        max-height: $height-gif-md-active-max;
+        width: auto;
+        height: auto;
+    }
+    
+    .carousel-item__details{
+        @include carousel_item_details($width-trending-md);
+    }
+    
+    .carousel-item__details-active {
+        //@extend %carousel_item_details_active;
+        max-width: $width-gif-md-active-max;
+        width: auto;
+        font-size: 16px;
+        margin-top: 27px;
+        
+        //position
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+    }
+    
+    .carousel-item__info {
+        overflow-x: hidden;
+        p {
+            text-align: start;
+        }
+    
+        h3 {
+            margin-bottom: 21px;
+            white-space: pre-wrap;
+        }
+    }
+    
+    .bg-modal__modal-close {
+        font-size: 30px;
+        top: 100px;
+        right: 100px;
     }
 }

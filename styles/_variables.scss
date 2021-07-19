@@ -8,6 +8,9 @@ $montserrat: 'Montserrat', sans-serif;
 $width-trending-phone: 243px;
 $height-trending-phone: 187px;
 
+$width-trending-md : 280px; //medium devices
+$height-trending-md : 216px;
+
 //search variable
 $width-search-phone: 156px;
 $height-search-phone: 120px;
@@ -15,6 +18,9 @@ $height-search-phone: 120px;
 //active modals gif items
 $width-gif-phone-active-max: 280px;
 $height-gif-phone-active-max: 380px;
+
+$width-gif-md-active-max: 695px;
+$height-gif-md-active-max: 500px;
 
 //Mixins
 @mixin carousel_item($width, $height) {

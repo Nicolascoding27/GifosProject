@@ -73,6 +73,9 @@ function assign_events_items(father_element,active_favorite=false) {
                     carousel_item_details_buttons.classList.remove('carousel-item__buttons')
                     carousel_item_details_buttons.classList.add('carousel-item__buttons_active')
                 }
+                if(father_element.classList[0]==='carousel__container'){
+                    father_element.classList.add('carousel__container_inline')
+                }
             })
             
             if(modal_close){
@@ -94,6 +97,9 @@ function assign_events_items(father_element,active_favorite=false) {
                         carousel_item_details_info.classList.remove('carousel-item__info_active')
                         carousel_item_details_buttons.classList.add('carousel-item__buttons')
                         carousel_item_details_buttons.classList.remove('carousel-item__buttons_active')
+                    }
+                    if(father_element.classList[0]==='carousel__container'){
+                        father_element.classList.remove('carousel__container_inline')
                     }
                 }
             }
