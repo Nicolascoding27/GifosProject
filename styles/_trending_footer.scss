@@ -325,10 +325,7 @@
             width: 205px;
         }
     } 
-}
 
-@media screen and (min-width: 960px) and (max-width: 1264px) {
-    // medium devices
     .trending {
         height: 640px;
     
@@ -344,7 +341,6 @@
     }
 
     .carousel {
-        width: 800px;
         overflow-x: scroll;
         padding: 0px;
     
@@ -352,11 +348,41 @@
         .bg-modal {
             margin-right: 25px;
         }
-        
     }
 
     .carousel--button {
         display: flex;
+    }
+
+    .carousel-item__details-active {
+        max-width: $width-gif-md-active-max;
+        width: 100%;
+        font-size: 16px;
+        margin-top: 27px;
+        gap: 10px;
+    }
+
+    .carousel-item__info {
+        overflow-x: hidden;
+        p {
+            text-align: start;
+        }
+    
+        h3 {
+            margin-bottom: 21px;
+            white-space: pre-wrap;
+        }
+    }
+
+    .bg-modal__modal-close {
+        font-size: 30px;
+    }
+}
+
+@media screen and (min-width: 960px) and (max-width: 1264px) {
+    // medium devices
+    .carousel {
+        width: 800px;
     }
 
     #previous {
@@ -370,27 +396,20 @@
         @include carousel_item($width-trending-md,$height-trending-md);
     }
     
+    /* carousel --- item---images---------------------------- */
+
     .carousel-item-active {
-        //@extend %carousel_item_active;
         max-width: $width-gif-md-active-max;
         background-color: transparent;
         width: auto;
         height: auto;
-        
-        display: flex; //maybe change
-        flex-direction: column;
-        align-items: center;
-        transition: 450ms all;
-        transform-origin: center left;
-        position: relative;
+        display: flex;
     }
-    
-    /* carousel --- item---images---------------------------- */
     
     .carousel-item__img {
         @include carousel_item_img($width-trending-md, $height-trending-md);
     }
-    
+
     .carousel-item__img-active {
         max-width: $width-gif-md-active-max;
         max-height: $height-gif-md-active-max;
@@ -402,34 +421,7 @@
         @include carousel_item_details($width-trending-md);
     }
     
-    .carousel-item__details-active {
-        //@extend %carousel_item_details_active;
-        max-width: $width-gif-md-active-max;
-        width: 100%;
-        font-size: 16px;
-        margin-top: 27px;
-        gap: 10px;
-        
-        //position
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row-reverse;
-    }
-    
-    .carousel-item__info {
-        overflow-x: hidden;
-        p {
-            text-align: start;
-        }
-    
-        h3 {
-            margin-bottom: 21px;
-            white-space: pre-wrap;
-        }
-    }
-    
     .bg-modal__modal-close {
-        font-size: 30px;
         top: 100px;
         right: 100px;
     }
@@ -437,34 +429,8 @@
 
 //-------------------------------------------------------------
 @media screen and (min-width: 1264px) {
-    .trending {
-        height: 640px;
-    
-        #trending__description {
-            font-size: 18px;
-            margin-bottom: 53px;
-        }
-    }
-
-    .title {
-        margin: 67px 0px 12px 0px;
-        font-size: 25px;
-    }
-
     .carousel {
         width: 1175px;
-        overflow-x: scroll;
-        padding: 0px;
-    
-        //hidden scrollbar
-        .bg-modal {
-            margin-right: 25px;
-        }
-        
-    }
-
-    .carousel--button {
-        display: flex;
     }
 
     #previous {
@@ -478,26 +444,20 @@
         @include carousel_item($width-trending-lg,$height-trending-lg);
     }
     
+    /* carousel --- item---images---------------------------- */
+
     .carousel-item-active {
         max-width: $width-gif-md-active-max;
         background-color: transparent;
         width: auto;
         height: auto;
-        
-        display: flex; //maybe change
-        flex-direction: column;
-        align-items: center;
-        transition: 450ms all;
-        transform-origin: center left;
-        position: relative;
+        display: flex;
     }
-    
-    /* carousel --- item---images---------------------------- */
     
     .carousel-item__img {
         @include carousel_item_img($width-trending-lg, $height-trending-lg);
     }
-    
+
     .carousel-item__img-active {
         max-width: $width-gif-md-active-max;
         max-height: $height-gif-md-active-max;
@@ -508,36 +468,9 @@
     .carousel-item__details{
         @include carousel_item_details($width-trending-lg);
     }
-    
-    .carousel-item__details-active {
-        //@extend %carousel_item_details_active;
-        max-width: $width-gif-md-active-max;
-        width: 100%;
-        font-size: 16px;
-        margin-top: 27px;
-        gap: 10px;
-        
-        //position
-        display: flex;
-        justify-content: space-between;
-        flex-direction: row-reverse;
-    }
-    
-    .carousel-item__info {
-        overflow-x: hidden;
-        p {
-            text-align: start;
-        }
-    
-        h3 {
-            margin-bottom: 21px;
-            white-space: pre-wrap;
-        }
-    }
-    
+
     .bg-modal__modal-close {
-        font-size: 30px;
         top: 100px;
-        right: 100px;
+        right: 278px;
     }
 }
