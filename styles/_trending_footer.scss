@@ -208,6 +208,17 @@
     }
 }
 
+.delete {
+    background: url('/assets/icon-trash-normal.svg') center no-repeat ;
+    background-size: cover;
+    display: none;
+
+    &:hover {
+        background: url('/assets/icon-trash-hover.svg');
+        background-size: cover;
+    }
+}
+
 .favorite_active {
     background: url('/assets/icon-fav-active.svg') center no-repeat;
     background-size: cover;

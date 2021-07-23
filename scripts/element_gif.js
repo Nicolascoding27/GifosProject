@@ -21,6 +21,7 @@ function create_html_gif_element(gif_elements,father_element){
 
                     <div class="carousel-item__buttons item-buttons">
                         <div id="favorite" class="favorite" aria-labelledby="favorite_icon"></div>
+                        <div id="delete" class="delete" aria-labelledby="delete_icon"></div>
                         <div id="download" aria-labelledby="download"><a href="#" download></a></div>
                         <div id="max" aria-labelledby="maximize"></div>
                     </div>
@@ -184,7 +185,7 @@ function button_query_action(){
     init_search(actual_search_option,search_offset,false)
 }
 
-function button_query_favorite_action(){
+function button_query_saved_elements_action(show_favorite=true){
     /* 
     This function generates request to giphy id endpoint
     */
@@ -194,5 +195,7 @@ function button_query_favorite_action(){
         button_more_results.classList.remove('visible')
         button_more_results.onclick = undefined
     }
-    init_local_storage_gif_loop(favorites,init=false)
+    if (show_favorite){init_local_storage_gif_loop(favorites,init=false)}
+    else {init_local_storage_gif_loop(my_gifs,init=false)}
+    
 }
