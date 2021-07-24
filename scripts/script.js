@@ -1,8 +1,12 @@
 /**Regular variables */
+
+// header elements -------------------------------------------
 let menu = document.querySelector('.header__menu')
 let button = document.querySelector('.header__menu--button')
 let xIcon = document.querySelector('.xIcon')
 let menuIcon = document.querySelector('.menuIcon')
+// -----------------------------------------------------------
+
 let nightModeButton = document.getElementById('darkModeButton');
 let title = document.getElementById('title_gifos');
 let line = document.getElementById('line')
@@ -37,13 +41,6 @@ function toggleMenu() {
 
 
 button.addEventListener("click", toggleMenu)
-var menuLinks = document.querySelectorAll(".menuLink")
-
-menuLinks.forEach(
-  function (menuLink) {
-    menuLink.addEventListener("click", toggleMenu)
-  }
-)
 
 
 /**Function that activates the dark mode */
