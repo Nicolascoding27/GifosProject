@@ -8,6 +8,7 @@ actual_search_option ---> save the actual search query term
 initial_position ---> indicates the actual position in the array of gifs id's
 final_position ---> indicates the final position in the array of gifs id's
 favorites ---> array with gifs id's mark as favorite 
+my_gifs ---> array with gifs id's mark as my_gifs
 gifs_trending ---> number of gifs in trending
 */
 let total_searches = 0
@@ -17,12 +18,17 @@ let actual_search_option = ''
 let initial_position = 0
 let final_position = 12
 let favorites = []
+let my_gifs = []
 let gifs_trending = 25
 
 //initialize favorite localstorage
 if (!localStorage.getItem("favorites")){
     localStorage.setItem("favorites",JSON.stringify([]))
 }
+if (!localStorage.getItem("my_gifs")){
+    localStorage.setItem("my_gifs",JSON.stringify([]))
+}
+
 
 
 //inputBox --> input_search--------------------------------
@@ -63,9 +69,14 @@ function init_button_search_list(gif_query_res_total_results, option=0) {
             button_query_action()
         }
     }
-    if (option === 1){
+    else if (option === 1){
         button_more_results.onclick = () => {
-            button_query_favorite_action()
+            button_query_saved_elements_action(true)
+        }
+    }
+    else if (option === 2){
+        button_more_results.onclick = () => {
+            button_query_saved_elements_action(false)
         }
     }
 }
@@ -168,14 +179,14 @@ async function init_favorites(id_element) {
     }
 }
 
-function init_local_storage_gif_loop(local_storage_array,init=true) {
+function init_local_storage_gif_loop(local_storage_array,init=true,option_value=1) {
     
     if (local_storage_array.length !== 0){
         for (let i= initial_position; i<final_position; i++){
             if(i > (local_storage_array.length -1)) {break}
             init_favorites(local_storage_array[i])
         }
-        if (init) {init_button_search_list(local_storage_array.length, option=1)}
+        if (init) {init_button_search_list(local_storage_array.length, option=option_value)}
     }else {
         toggle_show_empty_messague(list_no_result,"visible_no_result")
     }
@@ -184,6 +195,10 @@ function init_local_storage_gif_loop(local_storage_array,init=true) {
 function update_favorite_array(){
     favorites = JSON.parse(localStorage.getItem("favorites"))
 }
+function update_my_gifs_array(){
+    my_gifs = JSON.parse(localStorage.getItem("my_gifs"))
+}
+
 //-------------------------------------------------------------------------------
 
 function clean_search_list(){
@@ -198,7 +213,11 @@ document.addEventListener('DOMContentLoaded', () => {
 //initialize favorite localstorage gifs
 if (document.querySelector("#main_favorite.main__container")){
     update_favorite_array()
-    init_local_storage_gif_loop(favorites)
+    init_local_storage_gif_loop(favorites, option_value=1)
+}
+else if (document.querySelector("#main_my_gifs.main__container")) {
+    update_my_gifs_array()
+    init_local_storage_gif_loop(my_gifs, option_value=2)
 }
 
 
