@@ -1,0 +1,52 @@
+.animation__container {
+    display: flex;
+    align-items: center;
+
+    margin-left: 20px; //no necesario -- solo para mostrar
+}
+
+.animation__container--luz{
+    height: 151px;
+    width: 91px;
+    transform: translate(5px, 2px);
+    animation: blink_light 1s ease infinite;
+}
+
+.animation__container--wheels{
+    transform: translate(-8px,15px);
+    .animation__container--wheels_cinta1 {
+        width: 46px;
+        height: 46px;
+        animation: turn 4s linear infinite;
+    }
+    .animation__container--wheels_cinta2 {
+        width: 64px;
+        height: 64px;
+        animation: turn 6s linear infinite;
+    }
+}
+
+.animation__container--camera {
+    width: 123px;
+}
+
+// animations ----------------------------------------------
+@keyframes turn {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+@keyframes blink_light {
+    from {
+        opacity: 0.9;
+    }
+
+    to {
+        opacity: 0.4;
+    }
+}
