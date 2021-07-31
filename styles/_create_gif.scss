@@ -1,8 +1,16 @@
+.record {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+// animation ----------------------------------------------------
 .animation__container {
     display: flex;
     align-items: center;
 
-    margin-left: 20px; //no necesario -- solo para mostrar
+    transform: translate(-444px,114px);
 }
 
 .animation__container--luz{
@@ -49,4 +57,94 @@
     to {
         opacity: 0.4;
     }
+}
+// end ------------------------------------------------------
+
+// gif container --------------------------------------------
+.record__container {
+    width: 668px;
+    height: 390px;
+    border: 1px solid $purple;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -172px;
+}
+
+.record__container_border {
+    width: 27px;
+    height: 25px;
+    background: transparent;
+    position: absolute;
+}
+
+.top {
+    border-top: 1px solid #50E3C2;
+    top: 20px;
+}
+.left {
+    border-left: 1px solid #50E3C2;
+    left: 20px;
+}
+.right {
+    border-right: 1px solid #50E3C2;
+    right: 20px;
+}
+.bottom {
+    border-bottom: 1px solid #50E3C2;
+    bottom: 20px;
+}
+
+.record__container--display{
+    width: 480px;
+    height: 320px;
+}
+
+.record__container--display_cover {
+    background: rgba(87, 46, 229,0.6);
+    width: 100%;
+    height: 100%;
+}
+
+// Rollo de pelicula -------------------------------------------------
+.film_roll {
+    position: absolute;
+    width: 142px;
+    height: 88px;
+    padding-left: 13px;
+    right: 250px;
+    top: 500px;
+}
+
+// steps section -----------------------------------------------------
+.record__steps {
+    margin-top: 24px;
+}
+
+.record__steps--wrapper {
+    display: flex;
+    column-gap: 26px;
+}
+
+.record__steps-step {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $purple;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $purple;
+    font-family: $roboto;
+    font-weight: 900;
+    font-size: 18px;
+}
+
+.record__steps-divisor {
+    width: 795px;
+    height: 7px;
+    background: $purple;
+    margin: 20px 0px;
+    border-radius: 10px;
 }

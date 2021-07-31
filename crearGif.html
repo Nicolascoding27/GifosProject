@@ -1,46 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=
-    , initial-scale=1.0"
-    />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
-      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link rel="shortcut icon" type="image/jpg" href="assets/favicon.png" />
-    <link rel="stylesheet" href="/styles/styles.css" />
-    <title>Crea tu gifo</title>
-  </head>
-  <body>
-    <p>Creando gifos</p>
-    <main>
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse laborum
-        eos illo est rem corrupti mollitia inventore dicta, in aut maxime illum
-        consectetur nulla nesciunt praesentium dolore, quisquam, doloremque
-        voluptatibus!
-      </p>
-    </main>
-    <!-- This one will display
-      -->
-    <video controls></video>
-    <!-- This one will save
-     -->
-    <video id="vid2" controls></video>
-    <button id="btnStart">Start</button>
-    <button id="btnStop">Stop</button>
-    <button id="btnSave">Record</button>
-    <script src="./scripts/crea.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+    integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="shortcut icon" type="image/jpg" href="assets/favicon.png" />
+  <link rel="stylesheet" href="/styles/styles.css">
+  <title>Gifos project</title>
+</head>
+
+<body>
+  <div id="line" class="line--purple"></div>
+  <header >
+    <div id="header" class="header__container">
+      <img id ="logo" class='header--logo' src="./assets/logo-mobile.svg">
+      <button id="header--toggleButton" class="header__menu--button">
+        <i class="menuIcon material-icons">
+          menu
+        </i>
+        <span class="xIcon material-icons">
+          close
+        </span>
+      </button>
+    </div>
+    <ul id="list" class="header__menu">
+      <li><a class="menuLink" id="darkModeButton" href="#">Modo Nocturno</a></li>
+      <li><a class="menuLink" href="favorites.html">Favoritos</a></li>
+      <li><a class="menuLink" href="my_gif.html">Mis GIFOS</a></li>
+      <li class="show_link"><a class="menuLink button_add_gif" href="crearGif.html">
+        <i class="fas fa-plus"></i>
+      </a></li>
+    </ul>
+  </header>
+  <main class="record">
+    <div class="animation__container">
+      <div class="animation__container--wrapper">
+          <div class="animation__container--wheels">
+              <img class="animation__container--wheels_cinta1" src="/assets/element_cinta1.svg" alt="cinta_1">
+              <img class="animation__container--wheels_cinta2" src="/assets/element_cinta2.svg" alt="cinta_2">
+          </div>
+          <img class="animation__container--camera" src="/assets/element-camara.svg" alt="element_camara">
+      </div>
+      <img class="animation__container--luz" src="/assets/element-luz-camara.svg" alt="luz_camara">
+    </div>
+    <div class="record__container">
+      <div class="record__container_border top left"></div>
+      <div class="record__container_border top right"></div>
+      <div class="record__container_border bottom right"></div>
+      <div class="record__container_border bottom left"></div>
+      <div class="record__container--display">
+        <div class="record__container--display_cover"></div>
+      </div>
+    </div>
+
+    <img class="film_roll" src="/assets/pelicula.svg" alt="rollo_de_pelicula">
+    <div class="record__steps">
+      <div class="record__steps--wrapper">
+        <div id="step_1" class="record__steps-step">1</div>
+        <div id="step_2" class="record__steps-step">2</div>
+        <div id="step_3" class="record__steps-step">3</div>
+      </div>
+    </div>
+    <hr class="record__steps-divisor">
+
+    <div id="button_list" class="button_more visible">
+      <p>Comenzar</p>
+    </div>
+
+  </main>
+
+  <footer class="footer" id="footer">
+    <div class="footer-container">
+      <p class="footer__text">Compartir en:</p>
+      <ul>
+        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+      </ul>
+    </div>
+    <p class="footer__text">© GIFOS 2020 All Rights Reserved</p>
+  </footer>
+  <script src="./scripts/element_gif.js"></script>
+  <script src="./scripts/api.js"></script>
+  <script src="./scripts/suggestions.js"></script>
+  <script src="./scripts/script.js"></script>
+</body>
+
 </html>
