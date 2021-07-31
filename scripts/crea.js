@@ -71,7 +71,7 @@ navigator.mediaDevices
     });
     mediaRecorder.ondataavailable = function (ev) {
       chunks.push(ev.data); //we're ppushing the data into the array
-    };
+    };````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````
     mediaRecorder.onstop = ev => {
       let blob = new Blob(chunks, { type: "video/mp4;" });
       console.log(chunks)
