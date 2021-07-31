@@ -56,6 +56,7 @@ header {
     padding-left:0px; //add padding in media query
     font-family: "Montserrat", sans-serif;
     color: $purple;
+    cursor: pointer;
 
     &:hover {
         border-bottom: 2px solid #5ED7C6;

@@ -1,8 +1,17 @@
+.container-create-gif {
+    min-height: 100%;
+}
+
 .record {
     display: flex;
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
+
+    #button_list {
+        margin-top: -88px;
+        margin-bottom: 26px;
+    }
 }
 
 // animation ----------------------------------------------------
@@ -107,24 +116,56 @@
     height: 100%;
 }
 
+// counter
+.record__step-counter {
+    color: $purple;
+    font-family: $montserrat;
+    font-size: 15px;
+    text-align: center;
+    grid-column-start: 5;
+    display: none;
+}
+
+.record_step-repeat {
+    color: $purple;
+    text-transform: uppercase;
+    font-family: $montserrat;
+    font-size: 15px;
+    text-align: center;
+    grid-column-start: 5;
+    cursor: pointer;
+
+    &:hover {
+        border-bottom: 2px solid #5ED7C6;
+    }
+
+    &:active {
+        color: #9CAFC3;
+        border-bottom: none;
+    }
+}
+
 // Rollo de pelicula -------------------------------------------------
 .film_roll {
-    position: absolute;
     width: 142px;
     height: 88px;
     padding-left: 13px;
-    right: 250px;
-    top: 500px;
+    transform: translate(470px,-110px);
 }
 
 // steps section -----------------------------------------------------
 .record__steps {
     margin-top: 24px;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: repeat(5,1fr);
+    align-items: center;
 }
 
 .record__steps--wrapper {
     display: flex;
     column-gap: 26px;
+    grid-column-start: 3;
 }
 
 .record__steps-step {
@@ -141,10 +182,27 @@
     font-size: 18px;
 }
 
+.record__steps-step-active {
+    color: white;
+    background: $purple;
+}
+
 .record__steps-divisor {
     width: 795px;
     height: 7px;
     background: $purple;
     margin: 20px 0px;
     border-radius: 10px;
+}
+
+// footer modification -----------------------------------
+.footer_bottom {
+    position: absolute;
+    bottom: 0;
+}
+
+@media screen and (max-height: 730px) {
+    .footer_bottom {
+        bottom: -150px;
+    }   
 }
