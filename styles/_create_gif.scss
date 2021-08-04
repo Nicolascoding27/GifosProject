@@ -39,7 +39,7 @@
     .animation__container--wheels_cinta2 {
         width: 64px;
         height: 64px;
-        animation: turn 6s linear infinite;
+        animation: turn 9s linear infinite reverse;
     }
 }
 
@@ -108,14 +108,106 @@
 .record__container--display{
     width: 480px;
     height: 320px;
+    position: relative;
+}
+
+.record_display_video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .record__container--display_cover {
     background: rgba(87, 46, 229,0.6);
-    width: 100%;
-    height: 100%;
+    padding: 12px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    display: grid;
+    grid-template-columns: 74px auto 74px;
 }
 
+.record__container--display_messague {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    justify-content: center;
+    align-items: center;
+    
+    h2 {
+        color: $purple;
+        font-size: 25px;
+        font-family: $montserrat;
+
+        span {
+            color: $light-green;
+        }
+    }
+    p {
+        font-family: $roboto;
+        font-size: 16px;
+    }
+}
+
+.record__container--messague_check {
+    grid-column-start: 2;
+    justify-self: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 14px;
+
+    #loader {
+        animation: turn 3s linear infinite;
+    }
+}
+.alself-center {
+    align-self: center;
+}
+
+.record__container--options {
+    grid-column-start: 3;
+    display: flex;
+    column-gap: 10px;
+
+    div {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+.record__container--messague_check-text {
+    font-size: 15px;
+    font-family: $montserrat;
+    font-weight: 800;
+    color: white;
+}
+
+#download-record {
+    background: url('/assets/icon-download.svg') center no-repeat ;
+    background-size: cover;
+
+    &:hover, &:active {
+        background: url('/assets/icon-download-hover.svg');
+        background-size: cover;
+    }
+}
+
+#link-record {
+    background: url('/assets/icon-link-normal.svg');
+    background-size: cover;
+
+    &:hover, &:active {
+        background: url('/assets/icon-link-hover.svg');
+        background-size: cover;
+    }
+}
 // counter
 .record__step-counter {
     color: $purple;
@@ -123,7 +215,7 @@
     font-size: 15px;
     text-align: center;
     grid-column-start: 5;
-    display: none;
+    display: none; //change
 }
 
 .record_step-repeat {
@@ -134,6 +226,7 @@
     text-align: center;
     grid-column-start: 5;
     cursor: pointer;
+    display: none; //change
 
     &:hover {
         border-bottom: 2px solid #5ED7C6;
@@ -206,3 +299,22 @@
         bottom: -150px;
     }   
 }
+
+/* Estructura de apoyo
+
+<div class="carousel-item__details item-detail">
+
+    <div class="carousel-item__buttons item-buttons">
+        <div id="favorite" class="favorite" aria-labelledby="favorite_icon"></div>
+        <div id="delete" class="delete" aria-labelledby="delete_icon"></div>
+        <div id="download" aria-labelledby="download"><a href="#" download></a></div>
+        <div id="max" aria-labelledby="maximize"></div>
+    </div>
+
+    <div class="carousel-item__info item-info">
+        <p></p>
+        <h3></h3>
+    </div>
+</div>
+
+*/
