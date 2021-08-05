@@ -21,16 +21,6 @@ let favorites = []
 let my_gifs = []
 let gifs_trending = 25
 
-//initialize favorite localstorage
-if (!localStorage.getItem("favorites")){
-    localStorage.setItem("favorites",JSON.stringify([]))
-}
-if (!localStorage.getItem("my_gifs")){
-    localStorage.setItem("my_gifs",JSON.stringify([]))
-}
-
-
-
 //inputBox --> input_search--------------------------------
 const search_main_container = document.querySelector('.main__container')
 const search_container_list = search_main_container.querySelector('#result_list')
@@ -45,8 +35,6 @@ let bg_modal_items
 //empty elements list---------------------------------------
 let list_no_result = search_main_container.querySelector(".main__container_no-result")
 //----------------------------------------------------------
-
-APIKEY= "DCAxXJyKXP7rMfWdncYE04ImQn07Cvfg"
 
 //https://media0.giphy.com/media/${id}/giphy.gif
 /* let response =  fetch(link)
@@ -204,11 +192,6 @@ function update_my_gifs_array(){
 function clean_search_list(){
     search_container_list.innerHTML = ''
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    init_trending()
-    media_queries_changes(window.innerWidth)
-})
 
 //initialize favorite localstorage gifs
 if (document.querySelector("#main_favorite.main__container")){
