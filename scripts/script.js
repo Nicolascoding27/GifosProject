@@ -83,3 +83,24 @@ function activateDarkMode() {
     
   }
 }
+
+// Initialize trending and resize events
+window.addEventListener("resize", () => {
+  width_viewport = window.innerWidth
+  media_queries_changes(width_viewport)
+  try {
+      media_queries_changes_trending(width_viewport)
+  } catch {
+      console.log("Elementos de trending no definidos en esta sección")
+  }
+  
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+  media_queries_changes(window.innerWidth)
+  try {
+      init_trending()
+  } catch {
+      console.log("Elementos de trending no definidos en esta sección")
+  }
+})
