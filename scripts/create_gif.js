@@ -51,16 +51,24 @@ Las vistas son insertadas en:
 
 const record = document.querySelector('.record')
 const record_display = record.querySelector('#record_display')
+const record_steps_container = record.querySelector('.record__steps')
+const record_steps_counter = record_steps_container.querySelector('.record__step-counter')
+const record_steps_repeat = record_steps_container.querySelector('.record_step-repeat')
+const record_steps = record_steps_container.querySelectorAll('.record__steps-step')
+
 function clean_element(father) {
     father.innerHTML = ""
 }
+
+// view record display functions
+
 function view_1_record(father) {
     const content = `
     <div id="show_container" class="record__container--display_messague">
-        <h2>¿Nos das acceso</h2>
-        <h2>a tu cámara?</h2>
-        <p>El acceso a tu camara será válido sólo</p>
-        <p>por el tiempo en el que estés creando el GIFO.</p>
+        <h2>Aquí podrás</h2>
+        <h2>crear tus propios <span>GIFOS</span></h2>
+        <p>¡Crea tu GIFO en sólo 3 pasos!</p>
+        <p>(sólo necesitas una cámara para grabar un video)</p>
     </div>
     `
     father.innerHTML = content
@@ -110,3 +118,17 @@ function view_5_record(father) {
     `
     father.innerHTML = content
 }
+
+// steps functions
+function asign_step (index) {
+    record_steps[index].classList.add('record__steps-step-active')
+}
+function remove_step (index) {
+    record_steps[index].classList.remove('record__steps-step-active')
+}
+
+//visibility of counter and repeat
+toggle_show_empty_messague(record_steps_repeat,'block')
+
+view_1_record(record_display)
+asign_step(0)
