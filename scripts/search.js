@@ -7,7 +7,17 @@ const icon = searchWrapper.querySelector(".main__container--serachbox--icon")
 const icon_search = icon.querySelector("i")
 const icon_search_active = searchWrapper.querySelector(".main__container--searchbox--icon-active")
 const icon_list_options = '<i class="fas fa-search"></i>'
-//--------------------------------------------------------------------------
+// End --------------------------------------------------------------------------
+
+//suggestion generator function and slider button functionality -----------------------
+
+let suggestions
+
+async function get_suggestions (data){
+    suggestions = await init_search_suggestions(data)
+}
+
+// End --------------------------------------------------------------------------------
 
 //search suggestions-----------------------------------------------
 // if user press any key and release
