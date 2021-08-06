@@ -59,6 +59,11 @@ const button_record_step = record.querySelector('#button_list')
 
 let button_step = 1
 
+record_steps_counter.innerHTML = "00:00:00"
+hours = 0
+minutes = 0
+seconds = 0
+
 function clean_element(father) {
     father.innerHTML = ""
 }
@@ -131,9 +136,10 @@ function remove_step (index) {
 }
 
 // visibility of counter and repeat
-toggle_show_empty_messague(record_steps_repeat,'block')
+// toggle_show_empty_messague(record_steps_repeat,'block')
+toggle_show_empty_messague(record_steps_counter,'block')
 
-// buttons_visibility
+// buttons_visibility ----------------------------------------------------------------------
 function asign_button_aspect(num) {
     let content = "<p></p>"
     clean_element(button_record_step)
@@ -164,5 +170,36 @@ function asign_button_aspect(num) {
     button_record_step.innerHTML = content
 }
 
+
+// timer ------------------------------------------------
+function prependZeros(num){
+    //function that format the time
+    var str = ("" + num);
+    return (Array(Math.max(3-str.length, 0)).join("0") + str);
+}
+
+let timekeeperFunction = ()=>{
+    seconds +=1 
+    //verificación segundos
+    if(seconds === 60){
+        seconds = 0
+        minutes += 1
+    }
+    if(minutes === 60){
+        minutes = 0
+        hours += 1
+    }
+    if(hours === 24) {
+        hours = 0
+    }
+    let hs = prependZeros(hours)
+    let mm = prependZeros(minutes)
+    let ss = prependZeros(seconds)
+    record_steps_counter.innerHTML = hs +":"+mm+":"+ss;
+}
+
 view_1_record(record_display)
 asign_step(0)
+
+timekeeper =  setInterval(timekeeperFunction,1000)
+
