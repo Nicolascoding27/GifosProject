@@ -55,6 +55,9 @@ const record_steps_container = record.querySelector('.record__steps')
 const record_steps_counter = record_steps_container.querySelector('.record__step-counter')
 const record_steps_repeat = record_steps_container.querySelector('.record_step-repeat')
 const record_steps = record_steps_container.querySelectorAll('.record__steps-step')
+const button_record_step = record.querySelector('#button_list')
+
+let button_step = 1
 
 function clean_element(father) {
     father.innerHTML = ""
@@ -127,8 +130,39 @@ function remove_step (index) {
     record_steps[index].classList.remove('record__steps-step-active')
 }
 
-//visibility of counter and repeat
+// visibility of counter and repeat
 toggle_show_empty_messague(record_steps_repeat,'block')
+
+// buttons_visibility
+function asign_button_aspect(num) {
+    let content = "<p></p>"
+    clean_element(button_record_step)
+    switch (num) {
+        case 1:
+            button_record_step.classList.add('visible')
+            content = `<p>comenzar</p>`
+            break
+        case 2:
+            button_record_step.classList.remove('visible')
+            break
+        case 3:
+            content = `<p>grabar</p>`
+            button_record_step.classList.add('visible')
+            break
+        case 4:
+            content = `<p>finalizar</p>`
+            break
+        case 5:
+            content = `<p>subir gifo</p>`
+            break
+        case 6:
+            button_record_step.classList.remove('visible')
+            break
+        default:
+            console.log(`case ${num} no esta definido en la secuencia`)
+    }
+    button_record_step.innerHTML = content
+}
 
 view_1_record(record_display)
 asign_step(0)
