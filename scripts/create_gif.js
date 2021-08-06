@@ -1,54 +1,3 @@
-/* 
-Las vistas son insertadas en:
-#record_display
-*/
-
-/* vista 1
-<div id="show_container" class="record__container--display_messague">
-    <h2>¿Nos das acceso</h2>
-    <h2>a tu cámara?</h2>
-    <p>El acceso a tu camara será válido sólo</p>
-    <p>por el tiempo en el que estés creando el GIFO.</p>
-</div>
-*/
-
-/* vista 2
-<div id="show_container" class="record__container--display_messague">
-    <h2>¿Nos das acceso</h2>
-    <h2>a tu cámara?</h2>
-    <p>El acceso a tu camara será válido sólo</p>
-    <p>por el tiempo en el que estés creando el GIFO.</p>
-</div>
-*/
-
-/* vista 3 is video instead img
-<img class="record_display_video" src="https://images.nintendolife.com/07616fafa58c0/1280x720.jpg" alt="prove">
-*/
-
-/* vista 4 is video instead img
-<img class="record_display_video" src="https://images.nintendolife.com/07616fafa58c0/1280x720.jpg" alt="prove">
-<div id="show_container" class="record__container--display_cover">
-    <div class="record__container--messague_check alself-center">
-    <img id="loader" src="/assets/loader.svg" alt="loader">
-    <p class="record__container--messague_check-text">Estamos subiendo tu GIFO</p>
-    </div>
-</div>
-*/
-
-/* vista 5 is video instead img
-<img class="record_display_video" src="https://images.nintendolife.com/07616fafa58c0/1280x720.jpg" alt="prove">
-<div id="show_container" class="record__container--display_cover">
-    <div class="record__container--options">
-    <div id="download-record" aria-labelledby="download-record"><a href="#" download></a></div>
-    <div id="link-record" class="link-record" aria-labelledby="delete_icon"></div>
-    </div>
-    <div class="record__container--messague_check">
-    <img src="/assets/check.svg" alt="check">
-    <p class="record__container--messague_check-text">GIFO subido con éxito</p>
-    </div>
-</div>
-*/
-
 const record = document.querySelector('.record')
 const record_display = record.querySelector('#record_display')
 const record_steps_container = record.querySelector('.record__steps')
@@ -57,7 +6,11 @@ const record_steps_repeat = record_steps_container.querySelector('.record_step-r
 const record_steps = record_steps_container.querySelectorAll('.record__steps-step')
 const button_record_step = record.querySelector('#button_list')
 
-let button_step = 1
+let record_display_video
+// record_display.querySelector('.record_display_video')
+
+let button_step = 2
+let videoStream
 
 record_steps_counter.innerHTML = "00:00:00"
 hours = 0
@@ -69,6 +22,11 @@ function clean_element(father) {
 }
 
 // view record display functions
+
+/* 
+Las vistas son insertadas en:
+#record_display
+*/
 
 function view_1_record(father) {
     const content = `
@@ -94,13 +52,13 @@ function view_2_record(father) {
 }
 function view_3_record(father) {
     const content = `
-    <img class="record_display_video" src="https://images.nintendolife.com/07616fafa58c0/1280x720.jpg" alt="prove">
+    <video class="record_display_video" src="./"></video>
     `
     father.innerHTML = content
 }
 function view_4_record(father) {
     const content = `
-    <img class="record_display_video" src="https://images.nintendolife.com/07616fafa58c0/1280x720.jpg" alt="prove">
+    <video class="record_display_video" src="./"></video>
     <div id="show_container" class="record__container--display_cover">
         <div class="record__container--messague_check alself-center">
             <img id="loader" src="/assets/loader.svg" alt="loader">
@@ -112,7 +70,7 @@ function view_4_record(father) {
 }
 function view_5_record(father) {
     const content = `
-    <img class="record_display_video" src="https://images.nintendolife.com/07616fafa58c0/1280x720.jpg" alt="prove">
+    <video class="record_display_video" src="./"></video>
     <div id="show_container" class="record__container--display_cover">
         <div class="record__container--options">
             <div id="download-record" aria-labelledby="download-record"><a href="#" download></a></div>
@@ -137,7 +95,6 @@ function remove_step (index) {
 
 // visibility of counter and repeat
 // toggle_show_empty_messague(record_steps_repeat,'block')
-toggle_show_empty_messague(record_steps_counter,'block')
 
 // buttons_visibility ----------------------------------------------------------------------
 function asign_button_aspect(num) {
@@ -170,12 +127,15 @@ function asign_button_aspect(num) {
     button_record_step.innerHTML = content
 }
 
+//initial conditions
+view_1_record(record_display)
+asign_button_aspect(1)
 
 // timer ------------------------------------------------
 function prependZeros(num){
     //function that format the time
-    var str = ("" + num);
-    return (Array(Math.max(3-str.length, 0)).join("0") + str);
+    var str = ("" + num)
+    return (Array(Math.max(3-str.length, 0)).join("0") + str)
 }
 
 let timekeeperFunction = ()=>{
@@ -195,11 +155,72 @@ let timekeeperFunction = ()=>{
     let hs = prependZeros(hours)
     let mm = prependZeros(minutes)
     let ss = prependZeros(seconds)
-    record_steps_counter.innerHTML = hs +":"+mm+":"+ss;
+    record_steps_counter.innerHTML = hs +":"+mm+":"+ss
 }
 
-view_1_record(record_display)
-asign_step(0)
+timekeeper =  setInterval(timekeeperFunction,1000) //timer
 
-timekeeper =  setInterval(timekeeperFunction,1000)
+//record proccess ------------------------------------------------------
+
+//Tiene toda la info del gif creado
+let form = new FormData();
+//url de la API search gifs GIPHY
+let urlUploadGif = `https://upload.giphy.com/v1/gifs?api_key=${APIKEY}`
+record_display_video = record_display.querySelector('.record_display_video')
+
+function accessCam (){
+    // Habilita permisos
+    navigator.mediaDevices.getUserMedia({
+        // devuelve promesa
+        audio: false, 
+        // sin audio
+        video: {
+           height: { max: 320 }
+        }
+        // medidas para el video
+     })
+     .then(responsesStream =>{
+        showRecElements(responsesStream)
+     })
+}
+
+let showRecElements = (stream)=>{
+    // guarda el video y lo conecta a los elementos
+    record_display_video.srcObject = stream //llamar record_display_video cuando este cargado
+    record_display_video.play()
+    //almacenar respuesta
+    videoStream = stream
+}
+
+//grabar video
+let streamVideo = ()=>{
+    // create RTC object (simplifies recording)
+    recorder = RecordRTC(videoStream, {
+        type: 'gif',
+        frameRate: 1,
+        quality: 10,
+        width: 360,
+        hidden: 240,
+        onGifRecordingStarted: function() {
+        console.log('started')
+    },
+    });
+    recorder.startRecording();
+    toggle_show_empty_messague(record_steps_counter,'block')
+    timekeeper =  setInterval(timekeeperFunction,1000);
+    //active button
+}
+
+function sequence_record(step) {
+    if (step === 2) {
+        view_1_record(record_display)
+        asign_button_aspect(1)
+        accessCam()
+    }
+    button_step += 1
+}
+
+button_record_step.onclick = () => {
+    sequence_record(button_step)
+}
 
