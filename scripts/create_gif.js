@@ -10,12 +10,14 @@ let record_display_video
 // record_display.querySelector('.record_display_video')
 
 let button_step = 2
+let recorder //save the record in RTC object
+let timekeeper
 let videoStream
 
 record_steps_counter.innerHTML = "00:00:00"
-hours = 0
-minutes = 0
-seconds = 0
+let hours = 0
+let minutes = 0
+let seconds = 0
 
 function clean_element(father) {
     father.innerHTML = ""
@@ -158,15 +160,12 @@ let timekeeperFunction = ()=>{
     record_steps_counter.innerHTML = hs +":"+mm+":"+ss
 }
 
-timekeeper =  setInterval(timekeeperFunction,1000) //timer
-
 //record proccess ------------------------------------------------------
 
 //Tiene toda la info del gif creado
 let form = new FormData();
 //url de la API search gifs GIPHY
 let urlUploadGif = `https://upload.giphy.com/v1/gifs?api_key=${APIKEY}`
-record_display_video = record_display.querySelector('.record_display_video')
 
 function accessCam (){
     // Habilita permisos
@@ -180,6 +179,7 @@ function accessCam (){
         // medidas para el video
      })
      .then(responsesStream =>{
+        sequence_record(button_step)
         showRecElements(responsesStream)
      })
 }
@@ -204,23 +204,63 @@ let streamVideo = ()=>{
         onGifRecordingStarted: function() {
         console.log('started')
     },
-    });
+    })
     recorder.startRecording();
     toggle_show_empty_messague(record_steps_counter,'block')
-    timekeeper =  setInterval(timekeeperFunction,1000);
+    timekeeper =  setInterval(timekeeperFunction,1000) // timer
     //active button
 }
 
 function sequence_record(step) {
     if (step === 2) {
-        view_1_record(record_display)
-        asign_button_aspect(1)
+        // permisos de camara
+        view_2_record(record_display)
+        asign_button_aspect(2)
+        asign_step(0)
+        button_step += 1
         accessCam()
+    } 
+    else if (step===3) {
+        // video mostrado
+        view_3_record(record_display)
+        asign_button_aspect(3)
+        remove_step(0)
+        asign_step(1)
+        record_display_video = record_display.querySelector('.record_display_video')
+        button_step += 1
     }
-    button_step += 1
+    else if (step===4) {
+        // grabar
+        streamVideo()
+        asign_button_aspect(4)
+        button_step += 1
+    }
+    else if (step===5) {
+        // stop
+        asign_button_aspect(5)
+        toggle_show_empty_messague(record_steps_counter,'block')
+        toggle_show_empty_messague(record_steps_repeat,'block')
+        clearInterval(timekeeper) // restart counter
+        button_step += 1
+        recorder.stopRecording(()=>{
+            let blob = recorder.getBlob()
+            form.append('file', blob, 'myGif.gif');
+            console.log(form.get('file'))
+        })
+    }
 }
 
 button_record_step.onclick = () => {
+    sequence_record(button_step)
+}
+record_steps_repeat.onclick = () => {
+    button_step = 3
+    toggle_show_empty_messague(record_steps_repeat,'block')
+    clearInterval(timekeeper)
+    hours = 0
+    minutes = 0
+    seconds = 0
+    accessCam()
     sequence_record(button_step)
 }
 
