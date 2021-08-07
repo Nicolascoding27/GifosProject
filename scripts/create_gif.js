@@ -6,6 +6,9 @@ const record_steps_repeat = record_steps_container.querySelector('.record_step-r
 const record_steps = record_steps_container.querySelectorAll('.record__steps-step')
 const button_record_step = record.querySelector('#button_list')
 
+let button_download_record
+let button_obtain_link_record
+
 let record_display_video
 // record_display.querySelector('.record_display_video')
 
@@ -13,11 +16,14 @@ let button_step = 2
 let recorder //save the record in RTC object
 let timekeeper
 let videoStream
+let file_gif_url
 
 record_steps_counter.innerHTML = "00:00:00"
 let hours = 0
 let minutes = 0
 let seconds = 0
+
+let myGif = JSON.parse(localStorage.getItem("my_gifs"))
 
 function clean_element(father) {
     father.innerHTML = ""
@@ -72,7 +78,7 @@ function view_4_record(father) {
 }
 function view_5_record(father) {
     const content = `
-    <video class="record_display_video" src="./"></video>
+    <img class="record_display_video" src="${file_gif_url}" />
     <div id="show_container" class="record__container--display_cover">
         <div class="record__container--options">
             <div id="download-record" aria-labelledby="download-record"><a href="#" download></a></div>
@@ -211,6 +217,16 @@ let streamVideo = ()=>{
     //active button
 }
 
+function obtain_link_record(text) {
+    navigator.clipboard.writeText(text)
+    .then(() => {
+        console.log('Text copied to clipboard');
+    })
+    .catch(err => {
+        console.log('Error in copying text: ', err);
+    })
+}
+
 function sequence_record(step) {
     if (step === 2) {
         // permisos de camara
@@ -248,6 +264,40 @@ function sequence_record(step) {
             console.log(form.get('file'))
         })
     }
+    else if (step===6){
+        // upload gif
+        videoStream.getTracks()[0].stop()
+        view_4_record(record_display)
+        asign_button_aspect(6)
+        toggle_show_empty_messague(record_steps_repeat,'block')
+        remove_step(1)
+        asign_step(2)
+
+        fetch(urlUploadGif, {
+            method:"POST",
+            body: form 
+        })
+        .then(response => {
+            return response.json();
+        })
+        .then(data_new =>{
+            //Habilitar vista 5
+            file_gif_url = `https://media.giphy.com/media/${data_new.data.id}/giphy.gif`
+            view_5_record(record_display)
+            button_download_record = record_display.querySelector('#download-record')
+            button_obtain_link_record = record_display.querySelector('#link-record')
+            myGif.push(data_new.data.id)
+            localStorage.setItem("my_gifs",JSON.stringify(myGif));
+
+            // buttons events
+            button_download_record.onclick = () => {
+                recorder.save('gif')
+            }
+            button_obtain_link_record.onclick = () => {
+                obtain_link_record(file_gif_url)
+            }
+        })
+    }
 }
 
 button_record_step.onclick = () => {
@@ -264,3 +314,9 @@ record_steps_repeat.onclick = () => {
     sequence_record(button_step)
 }
 
+// `https://media.giphy.com/media/${id_gif}/giphy.gif` to obtain link
+// file_gif = recorder.save('gif') use this function for download link
+
+
+// insert in the final
+// <img src="https://media.giphy.com/media/tUMImNF7DRXGvSOJDb/giphy.gif"></img>
