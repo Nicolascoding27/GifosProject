@@ -39,7 +39,7 @@ function create_html_gif_element(gif_elements,father_element){
     father_element.innerHTML += gif_html_element
 }
 
-function assign_events_items(father_element,active_favorite=false) {
+function assign_events_items(father_element,active_favorite=false,delete_btn=false) {
     //initialization of events in trending topic section
     bg_modal_items = father_element.querySelectorAll(':scope > div')
     bg_modal_items.forEach(
@@ -52,6 +52,12 @@ function assign_events_items(father_element,active_favorite=false) {
             const carousel_item_details_info = carousel_item_details.querySelector('.item-info')
             const favorite_button = carousel_item.querySelector('#favorite')
             const download_button = carousel_item.querySelector('#download')
+            const delete_button = carousel_item.querySelector('#delete')
+
+            if (delete_btn){
+                delete_button.classList.add('block')
+                favorite_button.hidden = true
+            }
 
             const gif_id = carousel_item.getAttribute('id')
 
@@ -127,6 +133,13 @@ function assign_events_items(father_element,active_favorite=false) {
                 //download a gif element
                 const link_download = download_button.querySelector('a')
                 download(gif_id,link_download)
+                event.stopPropagation()
+            }
+
+            delete_button.onclick = (event) => {
+                let my_gifs = JSON.parse(localStorage.getItem("my_gifs"))
+                my_gifs = my_gifs.filter(value => value !== gif_id)
+                localStorage.setItem("my_gifs",JSON.stringify(my_gifs))
                 event.stopPropagation()
             }
 
