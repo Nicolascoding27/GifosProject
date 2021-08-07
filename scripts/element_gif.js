@@ -198,10 +198,11 @@ function button_query_action(){
     init_search(actual_search_option,search_offset,false)
 }
 
-function button_query_saved_elements_action(show_favorite=true){
+function button_query_saved_elements_action(){
     /* 
     This function generates request to giphy id endpoint
     */
+    update_my_gifs_array()
     initial_position += 12
     final_position += 12
     if (total_searches - final_position <= 0){
@@ -209,6 +210,8 @@ function button_query_saved_elements_action(show_favorite=true){
         button_more_results.onclick = undefined
     }
     if (show_favorite){init_local_storage_gif_loop(favorites,init=false)}
-    else {init_local_storage_gif_loop(my_gifs,init=false)}
+    else {
+        init_local_storage_gif_loop(my_gifs,init=false)
+    }
     
 }

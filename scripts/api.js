@@ -10,6 +10,7 @@ final_position ---> indicates the final position in the array of gifs id's
 favorites ---> array with gifs id's mark as favorite 
 my_gifs ---> array with gifs id's mark as my_gifs
 gifs_trending ---> number of gifs in trending
+show_favorite ---> allow to update the array in show_favorite == true update favorite array and show_favorite == false update my_gifs array
 include_delete ---> bool variable, allow to show the delete button and hide the favorite button
 */
 let total_searches = 0
@@ -21,6 +22,7 @@ let final_position = 12
 let favorites = []
 let my_gifs = []
 let gifs_trending = 25
+let show_favorite = true
 let include_delete = false
 
 //inputBox --> input_search--------------------------------
@@ -61,12 +63,12 @@ function init_button_search_list(gif_query_res_total_results, option=0) {
     }
     else if (option === 1){
         button_more_results.onclick = () => {
-            button_query_saved_elements_action(true)
+            button_query_saved_elements_action()
         }
     }
     else if (option === 2){
         button_more_results.onclick = () => {
-            button_query_saved_elements_action(false)
+            button_query_saved_elements_action()
         }
     }
 }
@@ -170,7 +172,7 @@ async function init_save_gifs(id_element,delete_btn=false) {
 }
 
 function init_local_storage_gif_loop(local_storage_array,init=true,option_value=1) {
-    
+    console.log("mis_gifs",my_gifs)
     if (local_storage_array.length !== 0){
         for (let i= initial_position; i<final_position; i++){
             if(i > (local_storage_array.length -1)) {break}
@@ -202,6 +204,7 @@ if (document.querySelector("#main_favorite.main__container")){
 }
 else if (document.querySelector("#main_my_gifs.main__container")) {
     update_my_gifs_array()
+    show_favorite = false
     include_delete = true
     init_local_storage_gif_loop(my_gifs, option_value=2)
 }
