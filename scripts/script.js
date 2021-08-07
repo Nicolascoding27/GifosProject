@@ -100,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
   media_queries_changes(window.innerWidth)
   try {
       init_trending()
+      media_queries_changes_trending(window.innerWidth)
   } catch {
       console.log("Elementos de trending no definidos en esta sección")
   }
