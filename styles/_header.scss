@@ -101,6 +101,24 @@ header {
     }
 }
 
+// night mode -----------------
+.button_add_gif_night {
+    border: 1px solid white;
+
+    i{
+        color: white;
+    }
+
+    &:hover {
+        background: white;
+        
+        i {
+            color: black;
+        }
+    }
+}
+// ----------------------------
+
 .header__menu--active {
     position: relative;
     padding-top: 17px;
@@ -112,6 +130,7 @@ header {
     list-style: none;
     line-height: 60px;
     font-size: 15px;
+
     a {
         color: white;
         text-decoration: none;
@@ -125,6 +144,11 @@ header {
         }
     }
 }
+
+.header__menu--active.dark_menu_color {
+    background: #000;
+}
+
 .header__menu--button {
     color: $purple;
 }

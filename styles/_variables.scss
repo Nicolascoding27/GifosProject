@@ -105,3 +105,10 @@ $height-gif-md-active-max: 500px;
 .visible {
     display: flex;
 }
+
+// night mode ----------
+.text_white_night {
+    a {
+        color: white;
+    }
+}
