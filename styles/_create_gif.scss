@@ -81,6 +81,10 @@
     margin-top: -172px;
 }
 
+.record__container.night_mode {
+    border: 1px solid white;
+}
+
 .record__container_border {
     width: 27px;
     height: 25px;
@@ -109,6 +113,18 @@
     width: 480px;
     height: 320px;
     position: relative;
+}
+
+.record__container--display.night_mode{
+    .record__container--display_messague {
+        
+        h2 {
+            color: white;
+        }
+        p {
+            color: white;
+        }
+    }
 }
 
 .record_display_video {
@@ -218,6 +234,10 @@
     display: none; //change
 }
 
+.record__step-counter.night_mode {
+    color: white;
+}
+
 .record_step-repeat {
     color: $purple;
     text-transform: uppercase;
@@ -236,6 +256,10 @@
         color: #9CAFC3;
         border-bottom: none;
     }
+}
+
+.record_step-repeat.night_mode{
+    color: white;
 }
 
 .block {
@@ -263,6 +287,19 @@
     display: flex;
     column-gap: 26px;
     grid-column-start: 3;
+    
+}
+
+.record__steps--wrapper.nigth_mode {
+    .record__steps-step {
+        border: 1px solid white;
+        color: white;
+    }
+    
+    .record__steps-step-active {
+        color: black;
+        background: white;
+    }
 }
 
 .record__steps-step {
@@ -284,12 +321,28 @@
     background: $purple;
 }
 
+// night mode quitar
+/* .record__steps-step.night_mode {
+    border: 1px solid white;
+    color: white;
+}
+
+.record__steps-step-active.night_mode {
+    color: black;
+    background: white;
+} */
+// -------------------
+
 .record__steps-divisor {
     width: 795px;
     height: 7px;
     background: $purple;
     margin: 20px 0px;
     border-radius: 10px;
+}
+
+.record__steps-divisor.night_mode {
+    background: white;
 }
 
 // footer modification -----------------------------------
@@ -303,22 +356,3 @@
         bottom: -150px;
     }   
 }
-
-/* Estructura de apoyo
-
-<div class="carousel-item__details item-detail">
-
-    <div class="carousel-item__buttons item-buttons">
-        <div id="favorite" class="favorite" aria-labelledby="favorite_icon"></div>
-        <div id="delete" class="delete" aria-labelledby="delete_icon"></div>
-        <div id="download" aria-labelledby="download"><a href="#" download></a></div>
-        <div id="max" aria-labelledby="maximize"></div>
-    </div>
-
-    <div class="carousel-item__info item-info">
-        <p></p>
-        <h3></h3>
-    </div>
-</div>
-
-*/

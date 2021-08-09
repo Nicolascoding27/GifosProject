@@ -102,6 +102,16 @@ $height-gif-md-active-max: 500px;
     }
 }
 
+.button_more_night {
+    border: solid 1px white;
+    color: white;
+
+    &:hover {
+        background-color: white;
+        color: black;
+    }
+}
+
 .visible {
     display: flex;
 }

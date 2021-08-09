@@ -4,6 +4,15 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    h1.text_dark {
+      color: white;
+    }
+
+    #trending--title.text_dark {
+      color: white;
+    }
+
     h1{
       width: 286px; 
       font-family: 'Montserrat', sans-serif;
@@ -32,9 +41,13 @@
     }
 
     //search section---------------------------------------------------------
+
+    
+    
+
     .main__container--wrapper{
         width: 334px;
-      
+
         .main__container--searchbox{
           background: #fff;
           width: 100%;
@@ -49,7 +62,7 @@
             opacity: 50%;
             margin: 0 auto;
             background: #9CAFC3;
-        }
+          }
       
           input {
             height: 45px;
@@ -98,6 +111,19 @@
           }
       
         }
+
+        // night mode ----------------------
+        .main__container--searchbox_nigh{
+          background: #37383C;
+          border: 2px solid white;
+    
+        input {
+            color: white;
+            background: #37383C;
+          }
+      
+        }
+        // ----------------------------------
       }
       
       .main__container--searchbox .main__container--serachbox--icon{
@@ -110,6 +136,9 @@
         font-size: 20px;
         text-align: center;
         cursor: pointer;
+      }
+      .main__container--searchbox .main__container--serachbox--icon_nigh{
+        color: white;
       }
 
       .main__container--searchbox .main__container--searchbox--icon-active {
@@ -167,6 +196,9 @@
             padding-top: 2px;
             margin-bottom: 45px;
         }
+    }
+    .main__container--trends.text_dark {
+      color: white;
     }
 
     .main__container_results_title{
@@ -349,7 +381,7 @@
     h1{
       width: 600px; 
       font-size: 35px;
-      color: $purple;
+      //color: $purple;
     }
 
     .main__conatiner--image{
