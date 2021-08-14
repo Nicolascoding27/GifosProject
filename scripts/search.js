@@ -115,7 +115,10 @@ function clean_search_bar(clean_title){
     let selectData = element.textContent
     inputBox.value = selectData
     title_search.textContent = selectData
-    searchWrapper.classList.remove("active")
+
+    clean_search_list()
+    init_search(selectData)
+    clean_search_bar(false)
   }
   
   function showSuggestions(list){
